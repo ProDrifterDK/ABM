@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28711.60
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABMStore", "MotoStore\ABMStore.csproj", "{9D26FCFA-F452-4D30-B84E-10BB8DAF7819}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABM", "ABM\ABM.csproj", "{E1B9BF2B-2D92-4A5A-9EF3-D2EE8D100CD1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9D26FCFA-F452-4D30-B84E-10BB8DAF7819}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9D26FCFA-F452-4D30-B84E-10BB8DAF7819}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9D26FCFA-F452-4D30-B84E-10BB8DAF7819}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9D26FCFA-F452-4D30-B84E-10BB8DAF7819}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1B9BF2B-2D92-4A5A-9EF3-D2EE8D100CD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1B9BF2B-2D92-4A5A-9EF3-D2EE8D100CD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1B9BF2B-2D92-4A5A-9EF3-D2EE8D100CD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1B9BF2B-2D92-4A5A-9EF3-D2EE8D100CD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {4D0641A1-3BC4-4578-B6B1-D9A3D8D119AB}
+		SolutionGuid = {370ADFC8-F659-43E9-A8B8-4CAB51A35509}
 	EndGlobalSection
 EndGlobal
