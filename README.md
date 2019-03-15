@@ -1,6 +1,6 @@
-**Resyst Project: MotoStore**
+**Resyst Project: ABM**
 
-This is the project's repository for the ABM motorcycle store.
+This is the project's repository for the ABM store.
 
 Developers:
  - Alan Gárate
@@ -8,4 +8,4 @@ Developers:
  - Samuel Cortés
  - Vicente Calderón
 
-**[Trello Board](https://trello.com/b/J0j27N8D/project-motostore)**
+**[Trello Board](https://trello.com/b/J0j27N8D/project-abm)**
