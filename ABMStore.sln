@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28711.60
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotoStore", "MotoStore\MotoStore.csproj", "{9D26FCFA-F452-4D30-B84E-10BB8DAF7819}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABMStore", "MotoStore\ABMStore.csproj", "{9D26FCFA-F452-4D30-B84E-10BB8DAF7819}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
