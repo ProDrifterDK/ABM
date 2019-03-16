@@ -10,13 +10,18 @@ nav {
 	text-align: center;
 }
 
-p {
-	margin: 0
+.no-shadows {
+	box-shadow: none !important;
 }
 
 #content-wrapper-before {
 	padding: 128px;
-	background-color: indigo;
+	background: url(../Resources/Images/background-color-nav.png) no-repeat;
+	background-size: 100%;
+}
+
+#customer-name {
+	margin: 0
 }
 
 #logo {
@@ -26,4 +31,13 @@ p {
 #main {
 	position: relative;
 	bottom: 150px;
+}
+
+#main-navbar {
+	background: url(../Resources/Images/background-color-nav.png) no-repeat;
+	background-size: 100%;
+}
+
+#shopping-cart-quantity {
+	margin: 0
 }
