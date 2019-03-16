@@ -4,10 +4,13 @@
 	flex-direction: column;
 }
 
+label-icon {
+	margin: 0px;
+}
+
 nav {
 	position: fixed;
 	z-index: 1;
-	text-align: center;
 }
 
 .no-shadows {
@@ -20,14 +23,6 @@ nav {
 	background-size: 100%;
 }
 
-#customer-name {
-	margin: 0
-}
-
-#logo {
-	vertical-align: middle;
-}
-
 #main {
 	position: relative;
 	bottom: 150px;
@@ -38,6 +33,6 @@ nav {
 	background-size: 100%;
 }
 
-#shopping-cart-quantity {
-	margin: 0
+#sidenav-button {
+	padding: 0 60px;
 }
