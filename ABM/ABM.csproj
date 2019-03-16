@@ -135,6 +135,8 @@
     <Content Include="Content\Site.css" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Resources\Images\background-color-nav.png" />
+    <Content Include="Resources\Images\Examples\car.png" />
+    <Content Include="Resources\Images\Examples\moto.png" />
     <Content Include="Resources\Images\logo.png" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -159,9 +161,8 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Sales.cshtml" />
+    <Content Include="Views\Home\BestSellers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

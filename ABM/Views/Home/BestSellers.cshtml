@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Los Más Vendidos";
+}
+<div class="right-align">
+	<a href='@Url.Action("Sales", "Home")' class="waves-effect waves-light btn">Ver las ofertas destacadas</a>
+</div>
+<div class="row">
+	@for (int i = 0; i < 6; i++) {
+		<div class="col s12 m6 l4">
+			<div class="card">
+				<div class="card-image">
+					<img src='@Url.Content("~/Resources/Images/Examples/car.png")' />
+					<a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></a>
+				</div>
+				<div class="card-content">
+					<span class="card-title">Car</span>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+				</div>
+			</div>
+		</div>
+	}
+</div>
