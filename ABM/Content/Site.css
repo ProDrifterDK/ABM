@@ -4,10 +4,6 @@
 	flex-direction: column;
 }
 
-label-icon {
-	margin: 0px;
-}
-
 nav {
 	position: fixed;
 	z-index: 1;
@@ -31,8 +27,4 @@ nav {
 #main-navbar {
 	background: url(../Resources/Images/background-color-nav.png) no-repeat;
 	background-size: 100%;
-}
-
-#sidenav-button {
-	padding: 0 60px;
 }
