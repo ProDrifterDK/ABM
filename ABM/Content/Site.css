@@ -7,15 +7,20 @@
 nav {
 	position: fixed;
 	z-index: 1;
+	text-align: center;
 }
 
-#logo {
-	vertical-align: middle
+p {
+	margin: 0
 }
 
 #content-wrapper-before {
 	padding: 128px;
 	background-color: indigo;
+}
+
+#logo {
+	vertical-align: middle;
 }
 
 #main {

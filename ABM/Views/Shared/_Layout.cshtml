@@ -10,16 +10,40 @@
 </head>
 <body>
 	<nav>
-		<div class="navbar-wrapper purple darken-4">
-			<a href="#" data-target="main-menu" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
-			<img id="logo" src="~/Resources/Images/logo.png" height="38" />
-			Test
+		<div class="nav-wrapper row purple darken-4">
+			<div class="col s2 m2 l1">
+				<a href="#" data-target="main-menu" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
+			</div>
+			<div class="col s6 m6 l9">
+				<form>
+					<div class="input-field">
+						<input id="search" type="search" required>
+						<label class="label-icon" for="search"><i class="material-icons">search</i></label>
+						<i class="material-icons">close</i>
+					</div>
+				</form>
+			</div>
+			<div class="col s2 m2 l1">
+				<a href="#">
+					<div class="row">
+						<div class="col s4 m4 l4" style="text-align: right">
+							<i class="material-icons">shopping_cart</i>
+						</div>
+						<div class="col s8 m8 l8" style="text-align: left">
+							<p id="shopping-cart-quantity">(0)</p>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col s2 m2 l1">
+				<a href="#"><i class="material-icons">person</i></a>
+			</div>
 		</div>
-		<ul class="sidenav" id="main-menu"></ul>
 	</nav>
 	<div id="content-wrapper-before">
 	</div>
 	<div id="main" class="container body-content">
+		<ul class="sidenav" id="main-menu"></ul>
 		@RenderBody()
 	</div>
 	@Scripts.Render("~/bundles/jquery")
