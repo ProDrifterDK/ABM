@@ -6,11 +6,20 @@
 
 nav {
 	position: fixed;
-	z-index: 1;
+	z-index: 100;
 }
 
 .no-shadows {
 	box-shadow: none !important;
+}
+
+.discount-figure {
+	position: relative;
+	background-color: tomato;
+	font-weight: 700;
+	color: white;
+	padding: 5px 5px 5px 5px;
+	border-radius: 0px 10px;
 }
 
 #content-wrapper-before {
@@ -27,4 +36,19 @@ nav {
 #main-navbar {
 	background: url(../Resources/Images/background-color-nav.png) no-repeat;
 	background-size: 100%;
+}
+
+#caption-offer {
+	color: tomato;
+	font-weight: 700;
+}
+
+#caption-offer-new-price {
+	font-weight: 700;
+}
+
+#caption-offer-old-price {
+	color: dimgrey;
+	font-weight: 300;
+	text-decoration: line-through;
 }
