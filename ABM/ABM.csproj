@@ -165,7 +165,10 @@
     <Content Include="Views\Home\Sales.cshtml" />
     <Content Include="Views\Home\BestSellers.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
-    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Delivery.cshtml" />
+    <Content Include="Views\Admin\Seller.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Admin\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
