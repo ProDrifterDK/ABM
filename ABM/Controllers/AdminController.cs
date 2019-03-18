@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace ABM.Controllers {
 	public class AdminController : Controller {
-		// GET: Admin
 		public ActionResult Login() => this.View();
 		public ActionResult Delivery() => this.View();
 		public ActionResult Seller() => this.View();
+		public ActionResult UserProfile() => this.View();
 	}
 }

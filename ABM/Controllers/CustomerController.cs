@@ -6,7 +6,6 @@ using System.Web.Mvc;
 
 namespace ABM.Controllers {
 	public class CustomerController : Controller {
-		// GET: Customer
 		public ActionResult UserProfile() => this.View();
 	}
 }
