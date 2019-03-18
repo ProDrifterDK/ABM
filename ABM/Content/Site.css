@@ -17,6 +17,19 @@
 	border-radius: 0px 10px;
 }
 
+#caption-description-oldprice {
+	color: dimgrey;
+	font-weight: 300;
+	text-decoration: line-through;
+	font-size: small;
+}
+
+#caption-description-offer {
+	color: tomato;
+	font-weight: 700;
+	font-size: large;
+}
+
 #caption-offer {
 	color: tomato;
 	font-weight: 700;
