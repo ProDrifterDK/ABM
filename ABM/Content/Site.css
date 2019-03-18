@@ -4,11 +4,6 @@
 	flex-direction: column;
 }
 
-nav {
-	position: fixed;
-	z-index: 100;
-}
-
 .no-shadows {
 	box-shadow: none !important;
 }
@@ -20,22 +15,6 @@ nav {
 	color: white;
 	padding: 5px 5px 5px 5px;
 	border-radius: 0px 10px;
-}
-
-#content-wrapper-before {
-	padding: 128px;
-	background: url(../Resources/Images/background-color-nav.png) no-repeat;
-	background-size: 100%;
-}
-
-#main {
-	position: relative;
-	bottom: 150px;
-}
-
-#main-navbar {
-	background: url(../Resources/Images/background-color-nav.png) no-repeat;
-	background-size: 100%;
 }
 
 #caption-offer {
@@ -51,4 +30,25 @@ nav {
 	color: dimgrey;
 	font-weight: 300;
 	text-decoration: line-through;
+}
+
+#content-wrapper-before {
+	padding: 128px;
+	background: url(../Resources/Images/background-color-nav.png) no-repeat;
+	background-size: 100%;
+}
+
+#main {
+	position: relative;
+	bottom: 150px;
+}
+
+#main-nav {
+	position: fixed;
+	z-index: 100;
+}
+
+#main-navbar {
+	background: url(../Resources/Images/background-color-nav.png) no-repeat;
+	background-size: 100%;
 }
