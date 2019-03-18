@@ -64,6 +64,13 @@
 	background-size: 100%;
 }
 
+#nav-search {
+	position: fixed;
+	z-index: 100;
+	bottom: 16px;
+	visibility: hidden;
+}
+
 #showcase {
 	padding: 45px 0px 0px 0px;
 }
