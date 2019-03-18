@@ -2,9 +2,9 @@
     ViewBag.Title = "Los Más Vendidos";
 }
 <div class="right-align">
-	<a href='@Url.Action("Sales", "Home")' class="waves-effect waves-light btn">Ver las ofertas destacadas</a>
+	<a href='@Url.Action("Sales", "Home")' class="waves-effect waves-light btn-large">Ver las ofertas destacadas</a>
 </div>
-<div class="row">
+<div id="showcase" class="row">
 	@for (int i = 0; i < 6; i++) {
 		<div class="col s12 m6 l4">
 			<div class="card">

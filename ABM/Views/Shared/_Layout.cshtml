@@ -91,9 +91,13 @@
 			</div>
 		</div>
 	</nav>
-	<div id="content-wrapper-before">
+	<!-- Mobile and Tablet -->
+	<div id="content-wrapper-before-mobile-and-tablet" class="hide-on-large-only">
 	</div>
-	<div id="main" class="no-shadows container body-content">
+	<!-- Desktop -->
+	<div id="content-wrapper-before" class="hide-on-med-and-down">
+	</div>
+	<div id="main" class="container body-content">
 		<ul class="sidenav" id="main-menu"></ul>
 		@RenderBody()
 	</div>

@@ -38,6 +38,12 @@
 	background-size: 100%;
 }
 
+#content-wrapper-before-mobile-and-tablet {
+	padding: 150px;
+	background: url(../Resources/Images/background-color-nav.png) no-repeat;
+	background-size: 100%;
+}
+
 #main {
 	position: relative;
 	bottom: 150px;
@@ -56,4 +62,8 @@
 #main-navbar {
 	background: url(../Resources/Images/background-color-nav.png) no-repeat;
 	background-size: 100%;
+}
+
+#showcase {
+	padding: 45px 0px 0px 0px;
 }
