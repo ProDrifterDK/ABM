@@ -15,6 +15,11 @@ namespace ABM {
 				defaults: new { controller = "Admin", action = "Login", id = UrlParameter.Optional }
 			);
 			routes.MapRoute(
+				name: "Customer",
+				url: "Customer/{id}",
+				defaults: new { controller = "Customer", action = "UserProfile", id = UrlParameter.Optional }
+			);
+			routes.MapRoute(
 				name: "Default",
 				url: "{action}/{id}",
 				defaults: new { controller = "Home", action = "Sales", id = UrlParameter.Optional }
