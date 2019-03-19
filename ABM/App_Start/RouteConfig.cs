@@ -9,9 +9,14 @@ namespace ABM {
 	public class RouteConfig {
 		public static void RegisterRoutes(RouteCollection routes) {
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-			_ = routes.MapRoute(
+			routes.MapRoute(
+				name: "Admin",
+				url: "Admin/{action}/{id}",
+				defaults: new { controller = "Admin", action = "Login", id = UrlParameter.Optional }
+			);
+			routes.MapRoute(
 				name: "Default",
-				url: "{controller}/{action}/{id}",
+				url: "{action}/{id}",
 				defaults: new { controller = "Home", action = "Sales", id = UrlParameter.Optional }
 			);
 		}
