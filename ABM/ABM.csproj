@@ -122,7 +122,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Administracion\AdministracionAreaRegistration.cs" />
     <Compile Include="Areas\Administracion\Controllers\HomeController.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Global.asax.cs">
@@ -174,15 +173,10 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Sales.cshtml" />
     <Content Include="Views\Home\BestSellers.cshtml" />
-    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
-    <Content Include="Views\Admin\Delivery.cshtml" />
-    <Content Include="Views\Admin\Seller.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
-    <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutCustomer.cshtml" />
     <Content Include="Views\Customer\UserProfile.cshtml" />
     <Content Include="Views\Home\Product.cshtml" />
-    <Content Include="Views\Admin\UserProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
