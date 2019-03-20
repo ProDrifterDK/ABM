@@ -2,7 +2,7 @@
 	ViewBag.Title = "Ofertas Destacadas";
 }
 <div class="right-align">
-	<a href='@Url.Action("BestSellers", "Home")' class="waves-effect waves-light btn-large">Ver los más vendidos</a>
+	<a href='@Url.Action("BestSellers", "Home")' class="waves-effect waves-light btn-large" style="margin-right:11px">Los más vendidos</a>
 </div>
 <div id="showcase" class="row">
 	@for (int i = 0; i < 6; i++) {
@@ -20,7 +20,7 @@
 					<p id="caption-offer-new-price">$200.000</p>
 				</div>
 				<div class="card-action center-align">
-					<a href='@Url.Action("Product", "Home")'>Detalles</a>
+					<a href='@Url.Action("Product", "Home")' style="margin-left:25px; color:darkblue">Detalles</a>
 				</div>
 			</div>
 		</div>
