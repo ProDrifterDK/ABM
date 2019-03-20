@@ -8,10 +8,6 @@ namespace ABM.Areas.Administracion.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Administracion/Home
-        public ActionResult Index()
-        {
-            return View();
-        }
+        public ActionResult Index() => this.View();
     }
 }
