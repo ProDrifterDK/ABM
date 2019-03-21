@@ -1,154 +1,169 @@
 ﻿<style>
-    .collapsible-body{
-        background-color: white;
-    }
-    .collapsible-header i.right{
-        position:absolute;
-        right:0;
-    }
+	.collapsible-body {
+		background-color: white;
+	}
 </style>
 
-
-<ul class="collapsible">
-    <li>
-        <div class="collapsible-header">Stock Tienda <i class="material-icons right">cloud_download</i></div>
-        <div class="collapsible-body">
-            <table class="responsive-table highlight striped">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Código</th>
-                        <th>Precio</th>
-                        <th>Stock</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Foco</td>
-                        <td>96821475869334</td>
-                        <td>$9.990</td>
-                        <td>10</td>
-                        <td>
-                            <i class="material-icons">add</i>&nbsp;
-                            <i class="material-icons">remove</i>&nbsp;
-                            <i class="material-icons">edit</i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Foco</td>
-                        <td>96821475869334</td>
-                        <td>$9.990</td>
-                        <td>10</td>
-                        <td>
-                            <i class="material-icons">add</i>&nbsp;
-                            <i class="material-icons">remove</i>&nbsp;
-                            <i class="material-icons">edit</i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Foco</td>
-                        <td>96821475869334</td>
-                        <td>$9.990</td>
-                        <td>10</td>
-                        <td>
-                            <i class="material-icons">add</i>&nbsp;
-                            <i class="material-icons">remove</i>&nbsp;
-                            <i class="material-icons">edit</i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Foco</td>
-                        <td>96821475869334</td>
-                        <td>$9.990</td>
-                        <td>10</td>
-                        <td>
-                            <i class="material-icons">add</i>&nbsp;
-                            <i class="material-icons">remove</i>&nbsp;
-                            <i class="material-icons">edit</i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Foco</td>
-                        <td>96821475869334</td>
-                        <td>$9.990</td>
-                        <td>10</td>
-                        <td>
-                            <i class="material-icons">add</i>&nbsp;
-                            <i class="material-icons">remove</i>&nbsp;
-                            <i class="material-icons">edit</i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Foco</td>
-                        <td>96821475869334</td>
-                        <td>$9.990</td>
-                        <td>10</td>
-                        <td>
-                            <i class="material-icons">add</i>&nbsp;
-                            <i class="material-icons">remove</i>&nbsp;
-                            <i class="material-icons">edit</i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Foco</td>
-                        <td>96821475869334</td>
-                        <td>$9.990</td>
-                        <td>10</td>
-                        <td>
-                            <i class="material-icons">add</i>&nbsp;
-                            <i class="material-icons">remove</i>&nbsp;
-                            <i class="material-icons">edit</i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Foco</td>
-                        <td>96821475869334</td>
-                        <td>$9.990</td>
-                        <td>10</td>
-                        <td>
-                            <i class="material-icons">add</i>&nbsp;
-                            <i class="material-icons">remove</i>&nbsp;
-                            <i class="material-icons">edit</i>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </li>
-    <li>
-        <div class="collapsible-header">Stock Camioneta<i class="material-icons right">cloud_download</i></div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-    <li>
-        <div class="collapsible-header">First <i class="material-icons right">cloud_download</i></div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-    <li>
-        <div class="collapsible-header">First <i class="material-icons right">cloud_download</i></div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-    <li>
-        <div class="collapsible-header">First <i class="material-icons right">cloud_download</i></div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-    <li>
-        <div class="collapsible-header">First <i class="material-icons right">cloud_download</i></div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-</ul>
-
-
-<script>
-  $(document).ready(function(){
-  });
-</script>
+<div class="row">
+	<div class="col s12 m9 l9">
+		<ul class="collapsible">
+			<li>
+				<div class="collapsible-header scrollspy" id="stock-tienda">
+					<div class="col s10 m10 l10">
+						Stock Tienda
+					</div>
+					<div class="col s2 m2 l2 right-align">
+						<i class="material-icons">cloud_download</i>
+					</div>
+				</div>
+				<div class="collapsible-body">
+					<table class="responsive-table highlight striped">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Nombre</th>
+								<th>Código</th>
+								<th>Precio</th>
+								<th>Stock</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>Foco</td>
+								<td>96821475869334</td>
+								<td>$9.990</td>
+								<td>10</td>
+								<td>
+									<i class="material-icons">add</i>&nbsp;
+									<i class="material-icons">remove</i>&nbsp;
+									<i class="material-icons">edit</i>
+								</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>Foco</td>
+								<td>96821475869334</td>
+								<td>$9.990</td>
+								<td>10</td>
+								<td>
+									<i class="material-icons">add</i>&nbsp;
+									<i class="material-icons">remove</i>&nbsp;
+									<i class="material-icons">edit</i>
+								</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>Foco</td>
+								<td>96821475869334</td>
+								<td>$9.990</td>
+								<td>10</td>
+								<td>
+									<i class="material-icons">add</i>&nbsp;
+									<i class="material-icons">remove</i>&nbsp;
+									<i class="material-icons">edit</i>
+								</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>Foco</td>
+								<td>96821475869334</td>
+								<td>$9.990</td>
+								<td>10</td>
+								<td>
+									<i class="material-icons">add</i>&nbsp;
+									<i class="material-icons">remove</i>&nbsp;
+									<i class="material-icons">edit</i>
+								</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>Foco</td>
+								<td>96821475869334</td>
+								<td>$9.990</td>
+								<td>10</td>
+								<td>
+									<i class="material-icons">add</i>&nbsp;
+									<i class="material-icons">remove</i>&nbsp;
+									<i class="material-icons">edit</i>
+								</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>Foco</td>
+								<td>96821475869334</td>
+								<td>$9.990</td>
+								<td>10</td>
+								<td>
+									<i class="material-icons">add</i>&nbsp;
+									<i class="material-icons">remove</i>&nbsp;
+									<i class="material-icons">edit</i>
+								</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>Foco</td>
+								<td>96821475869334</td>
+								<td>$9.990</td>
+								<td>10</td>
+								<td>
+									<i class="material-icons">add</i>&nbsp;
+									<i class="material-icons">remove</i>&nbsp;
+									<i class="material-icons">edit</i>
+								</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>Foco</td>
+								<td>96821475869334</td>
+								<td>$9.990</td>
+								<td>10</td>
+								<td>
+									<i class="material-icons">add</i>&nbsp;
+									<i class="material-icons">remove</i>&nbsp;
+									<i class="material-icons">edit</i>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</li>
+			<li>
+				<div class="collapsible-header scrollspy" id="stock-camioneta">
+					<div class="col s10 m10 l10">
+						Stock Camioneta
+					</div>
+					<div class="col s2 m2 l2 right-align">
+						<i class="material-icons">cloud_download</i>
+					</div>
+				</div>
+				<div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+			</li>
+			@for (int i = 0; i < 3; i++) {
+				<li>
+					<div id="collapsible-@i" class="collapsible-header scrollspy">
+						<div class="col s10 m10 l10">
+							Collapsible @i
+						</div>
+						<div class="col s2 m2 l2 right-align">
+							<i class="material-icons">cloud_download</i>
+						</div>
+					</div>
+					<div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+				</li>
+			}
+		</ul>
+	</div>
+	<div class="col m3 l3 hide-on-small-only">
+		<ul class="card card-content pinned section table-of-contents">
+			<li><a href="#stock-tienda">Stock Tienda</a></li>
+			<li><a href="#stock-camioneta">Stock Camioneta</a></li>
+			@for (int i = 0; i < 3; i++) {
+				<li>
+					<a href="#collapsible-@i">Collapsible @i</a>
+				</li>
+			}
+		</ul>
+	</div>
+</div>
