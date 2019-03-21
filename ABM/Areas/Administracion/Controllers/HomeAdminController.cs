@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace ABM.Areas.Administracion.Controllers
 {
-    public class HomeController : Controller
+    public class HomeAdminController : Controller
     {
         public ActionResult Index() => this.View();
     }

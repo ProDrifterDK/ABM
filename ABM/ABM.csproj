@@ -121,7 +121,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Administracion\AdministracionAreaRegistration.cs" />
-    <Compile Include="Areas\Administracion\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Administracion\Controllers\HomeAdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Global.asax.cs">
@@ -139,7 +139,7 @@
     <Content Include="Areas\Administracion\Views\web.config" />
     <Content Include="Areas\Administracion\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Administracion\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Administracion\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Administracion\Views\HomeAdmin\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Resources\Images\background-color-nav.png" />
     <Content Include="Resources\Images\background-div.png" />
