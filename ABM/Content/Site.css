@@ -4,8 +4,8 @@
 	flex-direction: column;
 }
 
-.no-shadows {
-	box-shadow: none !important;
+.collapsible-body {
+	background-color: white;
 }
 
 .discount-figure {
@@ -15,6 +15,14 @@
 	color: white;
 	padding: 5px 5px 5px 5px;
 	border-radius: 0px 10px;
+}
+
+.no-shadows {
+	box-shadow: none !important;
+}
+
+.table-of-contents {
+	padding: 20px 20px 20px 20px;
 }
 
 #caption-description-oldprice {
