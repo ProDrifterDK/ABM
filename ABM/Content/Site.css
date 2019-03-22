@@ -67,7 +67,11 @@
 
 #main {
 	position: relative;
-	bottom: 150px;
+	top:30px;
+}
+#mainAdmin {
+    position: relative;
+    top: 100px;
 }
 
 #main-nav {
@@ -81,8 +85,7 @@
 }
 
 #main-navbar {
-    background: url(../Resources/Images/background-div.png) no-repeat;
-    background-size: 100%;
+    
 }
 
 #nav-search {

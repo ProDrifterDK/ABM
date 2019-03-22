@@ -9,7 +9,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <nav id="main-nav-mobile-and-tablet" class="no-shadows blue darken-3">
+    <nav id="main-nav-mobile-and-tablet" class="no-shadows amber">
 		<div id="main-navbar" class="nav-wrapper row">
 			<div class="nav-wrapper col s8 m8 l9">
 				<a href="#" data-target="main-menu" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
@@ -31,13 +31,7 @@
 			</div>
 		</div>
     </nav>
-    <!-- Mobile and Tablet -->
-    <div id="content-wrapper-before-mobile-and-tablet" class="hide-on-large-only">
-    </div>
-    <!-- Desktop -->
-    <div id="content-wrapper-before" class="hide-on-med-and-down">
-    </div>
-    <div id="main" class="container body-content">
+    <div id="mainAdmin" class="container body-content">
         <ul class="sidenav" id="main-menu"></ul>
         @RenderBody()
     </div>
