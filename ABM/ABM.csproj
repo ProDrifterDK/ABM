@@ -146,6 +146,7 @@
     <Content Include="Resources\Images\background-navbar.png" />
     <Content Include="Resources\Images\Examples\car.png" />
     <Content Include="Resources\Images\Examples\moto.png" />
+    <Content Include="Resources\Images\Examples\Resyst logo R %28black backgroundless%29.png" />
     <Content Include="Resources\Images\facebook.svg" />
     <Content Include="Resources\Images\logo.png" />
     <Content Include="Scripts\jquery-3.3.1.js" />
