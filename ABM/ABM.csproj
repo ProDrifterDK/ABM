@@ -122,6 +122,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Administracion\AdministracionAreaRegistration.cs" />
     <Compile Include="Areas\Administracion\Controllers\HomeAdminController.cs" />
+    <Compile Include="Base\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Global.asax.cs">
@@ -193,6 +194,12 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ABM.Datos\ABM.Datos.csproj">
+      <Project>{7979acd4-e7d2-450c-a509-e955c1fccea8}</Project>
+      <Name>ABM.Datos</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28711.60
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABM", "ABM\ABM.csproj", "{E1B9BF2B-2D92-4A5A-9EF3-D2EE8D100CD1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABM.Datos", "ABM.Datos\ABM.Datos.csproj", "{7979ACD4-E7D2-450C-A509-E955C1FCCEA8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{E1B9BF2B-2D92-4A5A-9EF3-D2EE8D100CD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1B9BF2B-2D92-4A5A-9EF3-D2EE8D100CD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1B9BF2B-2D92-4A5A-9EF3-D2EE8D100CD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7979ACD4-E7D2-450C-A509-E955C1FCCEA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7979ACD4-E7D2-450C-A509-E955C1FCCEA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7979ACD4-E7D2-450C-A509-E955C1FCCEA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7979ACD4-E7D2-450C-A509-E955C1FCCEA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

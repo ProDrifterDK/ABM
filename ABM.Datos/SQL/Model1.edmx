@@ -1,0 +1,774 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ABMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="NUB_LISTA_PRODUCTOS">
+          <Key>
+            <PropertyRef Name="lpro_id" />
+          </Key>
+          <Property Name="lpro_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pro_id" Type="int" Nullable="false" />
+          <Property Name="lcom_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TBL_COMPRA">
+          <Key>
+            <PropertyRef Name="com_id" />
+          </Key>
+          <Property Name="com_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="com_cantidad" Type="int" Nullable="false" />
+          <Property Name="com_valor" Type="int" Nullable="false" />
+          <Property Name="lcom_id" Type="int" Nullable="false" />
+          <Property Name="com_fecha_compra" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TBL_LISTA_COMPRA">
+          <Key>
+            <PropertyRef Name="lcom_id" />
+          </Key>
+          <Property Name="lcom_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lcom_valor" Type="int" Nullable="false" />
+          <Property Name="usu_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_ORDEN_STOCK">
+          <Key>
+            <PropertyRef Name="ordn_id" />
+          </Key>
+          <Property Name="ordn_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ordn_fecha" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_PRODUCTO">
+          <Key>
+            <PropertyRef Name="pro_id" />
+          </Key>
+          <Property Name="pro_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pro_nombre" Type="varchar" MaxLength="100" />
+          <Property Name="pro_detalle" Type="varchar" MaxLength="500" />
+          <Property Name="pro_precio" Type="int" Nullable="false" />
+          <Property Name="pro_stock" Type="int" Nullable="false" />
+          <Property Name="tprod_id" Type="int" />
+          <Property Name="pro_disponibilidad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_RECEPCION">
+          <Key>
+            <PropertyRef Name="rcp_id" />
+          </Key>
+          <Property Name="rcp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usu_id" Type="int" Nullable="false" />
+          <Property Name="rcp_fecha" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_ROL">
+          <Key>
+            <PropertyRef Name="rol_id" />
+          </Key>
+          <Property Name="rol_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rol_nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_STOCK">
+          <Key>
+            <PropertyRef Name="stk_id" />
+          </Key>
+          <Property Name="stk_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pro_id" Type="int" Nullable="false" />
+          <Property Name="tstk_id" Type="int" Nullable="false" />
+          <Property Name="rcp_id" Type="int" Nullable="false" />
+          <Property Name="ordn_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_TIPO_PRODUCTO">
+          <Key>
+            <PropertyRef Name="tprod_id" />
+          </Key>
+          <Property Name="tprod_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tprod_nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_TIPO_STOCK">
+          <Key>
+            <PropertyRef Name="tstk_id" />
+          </Key>
+          <Property Name="tstk_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tstk_nombre" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_USUARIO">
+          <Key>
+            <PropertyRef Name="usu_id" />
+          </Key>
+          <Property Name="usu_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usu_nombre" Type="varchar" MaxLength="50" />
+          <Property Name="usu_rut" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="usu_telefono" Type="varchar" MaxLength="12" />
+          <Property Name="usu_correo" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="rol_id" Type="int" />
+          <Property Name="usu_clave" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_NUB_LISTA_PRODUCTOS_TBL_LISTA_COMPRA">
+          <End Role="TBL_LISTA_COMPRA" Type="Self.TBL_LISTA_COMPRA" Multiplicity="1" />
+          <End Role="NUB_LISTA_PRODUCTOS" Type="Self.NUB_LISTA_PRODUCTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_LISTA_COMPRA">
+              <PropertyRef Name="lcom_id" />
+            </Principal>
+            <Dependent Role="NUB_LISTA_PRODUCTOS">
+              <PropertyRef Name="lcom_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUB_LISTA_PRODUCTOS_TBL_PRODUCTO">
+          <End Role="TBL_PRODUCTO" Type="Self.TBL_PRODUCTO" Multiplicity="1" />
+          <End Role="NUB_LISTA_PRODUCTOS" Type="Self.NUB_LISTA_PRODUCTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PRODUCTO">
+              <PropertyRef Name="pro_id" />
+            </Principal>
+            <Dependent Role="NUB_LISTA_PRODUCTOS">
+              <PropertyRef Name="pro_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_COMPRA_TBL_LISTA_COMPRA">
+          <End Role="TBL_LISTA_COMPRA" Type="Self.TBL_LISTA_COMPRA" Multiplicity="1" />
+          <End Role="TBL_COMPRA" Type="Self.TBL_COMPRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_LISTA_COMPRA">
+              <PropertyRef Name="lcom_id" />
+            </Principal>
+            <Dependent Role="TBL_COMPRA">
+              <PropertyRef Name="lcom_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_LISTA_COMPRA_TBL_USUARIO">
+          <End Role="TBL_USUARIO" Type="Self.TBL_USUARIO" Multiplicity="1" />
+          <End Role="TBL_LISTA_COMPRA" Type="Self.TBL_LISTA_COMPRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_USUARIO">
+              <PropertyRef Name="usu_id" />
+            </Principal>
+            <Dependent Role="TBL_LISTA_COMPRA">
+              <PropertyRef Name="usu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_PRODUCTO_TBL_TIPO_PRODUCTO">
+          <End Role="TBL_TIPO_PRODUCTO" Type="Self.TBL_TIPO_PRODUCTO" Multiplicity="0..1" />
+          <End Role="TBL_PRODUCTO" Type="Self.TBL_PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_TIPO_PRODUCTO">
+              <PropertyRef Name="tprod_id" />
+            </Principal>
+            <Dependent Role="TBL_PRODUCTO">
+              <PropertyRef Name="tprod_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_RECEPCION_TBL_USUARIO">
+          <End Role="TBL_USUARIO" Type="Self.TBL_USUARIO" Multiplicity="1" />
+          <End Role="TBL_RECEPCION" Type="Self.TBL_RECEPCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_USUARIO">
+              <PropertyRef Name="usu_id" />
+            </Principal>
+            <Dependent Role="TBL_RECEPCION">
+              <PropertyRef Name="usu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_STOCK_TBL_ORDEN_STOCK">
+          <End Role="TBL_ORDEN_STOCK" Type="Self.TBL_ORDEN_STOCK" Multiplicity="1" />
+          <End Role="TBL_STOCK" Type="Self.TBL_STOCK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_ORDEN_STOCK">
+              <PropertyRef Name="ordn_id" />
+            </Principal>
+            <Dependent Role="TBL_STOCK">
+              <PropertyRef Name="ordn_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_STOCK_TBL_PRODUCTO1">
+          <End Role="TBL_PRODUCTO" Type="Self.TBL_PRODUCTO" Multiplicity="1" />
+          <End Role="TBL_STOCK" Type="Self.TBL_STOCK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PRODUCTO">
+              <PropertyRef Name="pro_id" />
+            </Principal>
+            <Dependent Role="TBL_STOCK">
+              <PropertyRef Name="pro_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_STOCK_TBL_RECEPCION">
+          <End Role="TBL_RECEPCION" Type="Self.TBL_RECEPCION" Multiplicity="1" />
+          <End Role="TBL_STOCK" Type="Self.TBL_STOCK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_RECEPCION">
+              <PropertyRef Name="rcp_id" />
+            </Principal>
+            <Dependent Role="TBL_STOCK">
+              <PropertyRef Name="rcp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_STOCK_TBL_TIPO_STOCK">
+          <End Role="TBL_TIPO_STOCK" Type="Self.TBL_TIPO_STOCK" Multiplicity="1" />
+          <End Role="TBL_STOCK" Type="Self.TBL_STOCK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_TIPO_STOCK">
+              <PropertyRef Name="tstk_id" />
+            </Principal>
+            <Dependent Role="TBL_STOCK">
+              <PropertyRef Name="tstk_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_USUARIO_TBL_ROL2">
+          <End Role="TBL_ROL" Type="Self.TBL_ROL" Multiplicity="0..1" />
+          <End Role="TBL_USUARIO" Type="Self.TBL_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_ROL">
+              <PropertyRef Name="rol_id" />
+            </Principal>
+            <Dependent Role="TBL_USUARIO">
+              <PropertyRef Name="rol_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ABMModelStoreContainer">
+          <EntitySet Name="NUB_LISTA_PRODUCTOS" EntityType="Self.NUB_LISTA_PRODUCTOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_COMPRA" EntityType="Self.TBL_COMPRA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_LISTA_COMPRA" EntityType="Self.TBL_LISTA_COMPRA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_ORDEN_STOCK" EntityType="Self.TBL_ORDEN_STOCK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_PRODUCTO" EntityType="Self.TBL_PRODUCTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_RECEPCION" EntityType="Self.TBL_RECEPCION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_ROL" EntityType="Self.TBL_ROL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_STOCK" EntityType="Self.TBL_STOCK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_TIPO_PRODUCTO" EntityType="Self.TBL_TIPO_PRODUCTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_TIPO_STOCK" EntityType="Self.TBL_TIPO_STOCK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_USUARIO" EntityType="Self.TBL_USUARIO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_NUB_LISTA_PRODUCTOS_TBL_LISTA_COMPRA" Association="Self.FK_NUB_LISTA_PRODUCTOS_TBL_LISTA_COMPRA">
+            <End Role="TBL_LISTA_COMPRA" EntitySet="TBL_LISTA_COMPRA" />
+            <End Role="NUB_LISTA_PRODUCTOS" EntitySet="NUB_LISTA_PRODUCTOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUB_LISTA_PRODUCTOS_TBL_PRODUCTO" Association="Self.FK_NUB_LISTA_PRODUCTOS_TBL_PRODUCTO">
+            <End Role="TBL_PRODUCTO" EntitySet="TBL_PRODUCTO" />
+            <End Role="NUB_LISTA_PRODUCTOS" EntitySet="NUB_LISTA_PRODUCTOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_COMPRA_TBL_LISTA_COMPRA" Association="Self.FK_TBL_COMPRA_TBL_LISTA_COMPRA">
+            <End Role="TBL_LISTA_COMPRA" EntitySet="TBL_LISTA_COMPRA" />
+            <End Role="TBL_COMPRA" EntitySet="TBL_COMPRA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_LISTA_COMPRA_TBL_USUARIO" Association="Self.FK_TBL_LISTA_COMPRA_TBL_USUARIO">
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+            <End Role="TBL_LISTA_COMPRA" EntitySet="TBL_LISTA_COMPRA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_PRODUCTO_TBL_TIPO_PRODUCTO" Association="Self.FK_TBL_PRODUCTO_TBL_TIPO_PRODUCTO">
+            <End Role="TBL_TIPO_PRODUCTO" EntitySet="TBL_TIPO_PRODUCTO" />
+            <End Role="TBL_PRODUCTO" EntitySet="TBL_PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_RECEPCION_TBL_USUARIO" Association="Self.FK_TBL_RECEPCION_TBL_USUARIO">
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+            <End Role="TBL_RECEPCION" EntitySet="TBL_RECEPCION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_STOCK_TBL_ORDEN_STOCK" Association="Self.FK_TBL_STOCK_TBL_ORDEN_STOCK">
+            <End Role="TBL_ORDEN_STOCK" EntitySet="TBL_ORDEN_STOCK" />
+            <End Role="TBL_STOCK" EntitySet="TBL_STOCK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_STOCK_TBL_PRODUCTO1" Association="Self.FK_TBL_STOCK_TBL_PRODUCTO1">
+            <End Role="TBL_PRODUCTO" EntitySet="TBL_PRODUCTO" />
+            <End Role="TBL_STOCK" EntitySet="TBL_STOCK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_STOCK_TBL_RECEPCION" Association="Self.FK_TBL_STOCK_TBL_RECEPCION">
+            <End Role="TBL_RECEPCION" EntitySet="TBL_RECEPCION" />
+            <End Role="TBL_STOCK" EntitySet="TBL_STOCK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_STOCK_TBL_TIPO_STOCK" Association="Self.FK_TBL_STOCK_TBL_TIPO_STOCK">
+            <End Role="TBL_TIPO_STOCK" EntitySet="TBL_TIPO_STOCK" />
+            <End Role="TBL_STOCK" EntitySet="TBL_STOCK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_USUARIO_TBL_ROL2" Association="Self.FK_TBL_USUARIO_TBL_ROL2">
+            <End Role="TBL_ROL" EntitySet="TBL_ROL" />
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ABMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="NUB_LISTA_PRODUCTOS">
+          <Key>
+            <PropertyRef Name="lpro_id" />
+          </Key>
+          <Property Name="lpro_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pro_id" Type="Int32" Nullable="false" />
+          <Property Name="lcom_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TBL_LISTA_COMPRA" Relationship="Self.FK_NUB_LISTA_PRODUCTOS_TBL_LISTA_COMPRA" FromRole="NUB_LISTA_PRODUCTOS" ToRole="TBL_LISTA_COMPRA" />
+          <NavigationProperty Name="TBL_PRODUCTO" Relationship="Self.FK_NUB_LISTA_PRODUCTOS_TBL_PRODUCTO" FromRole="NUB_LISTA_PRODUCTOS" ToRole="TBL_PRODUCTO" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TBL_COMPRA">
+          <Key>
+            <PropertyRef Name="com_id" />
+          </Key>
+          <Property Name="com_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="com_cantidad" Type="Int32" Nullable="false" />
+          <Property Name="com_valor" Type="Int32" Nullable="false" />
+          <Property Name="lcom_id" Type="Int32" Nullable="false" />
+          <Property Name="com_fecha_compra" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TBL_LISTA_COMPRA" Relationship="Self.FK_TBL_COMPRA_TBL_LISTA_COMPRA" FromRole="TBL_COMPRA" ToRole="TBL_LISTA_COMPRA" />
+        </EntityType>
+        <EntityType Name="TBL_LISTA_COMPRA">
+          <Key>
+            <PropertyRef Name="lcom_id" />
+          </Key>
+          <Property Name="lcom_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lcom_valor" Type="Int32" Nullable="false" />
+          <Property Name="usu_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NUB_LISTA_PRODUCTOS" Relationship="Self.FK_NUB_LISTA_PRODUCTOS_TBL_LISTA_COMPRA" FromRole="TBL_LISTA_COMPRA" ToRole="NUB_LISTA_PRODUCTOS" />
+          <NavigationProperty Name="TBL_COMPRA" Relationship="Self.FK_TBL_COMPRA_TBL_LISTA_COMPRA" FromRole="TBL_LISTA_COMPRA" ToRole="TBL_COMPRA" />
+          <NavigationProperty Name="TBL_USUARIO" Relationship="Self.FK_TBL_LISTA_COMPRA_TBL_USUARIO" FromRole="TBL_LISTA_COMPRA" ToRole="TBL_USUARIO" />
+        </EntityType>
+        <EntityType Name="TBL_ORDEN_STOCK">
+          <Key>
+            <PropertyRef Name="ordn_id" />
+          </Key>
+          <Property Name="ordn_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ordn_fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="TBL_STOCK" Relationship="Self.FK_TBL_STOCK_TBL_ORDEN_STOCK" FromRole="TBL_ORDEN_STOCK" ToRole="TBL_STOCK" />
+        </EntityType>
+        <EntityType Name="TBL_PRODUCTO">
+          <Key>
+            <PropertyRef Name="pro_id" />
+          </Key>
+          <Property Name="pro_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pro_nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="pro_detalle" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="pro_precio" Type="Int32" Nullable="false" />
+          <Property Name="pro_stock" Type="Int32" Nullable="false" />
+          <Property Name="tprod_id" Type="Int32" />
+          <Property Name="pro_disponibilidad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NUB_LISTA_PRODUCTOS" Relationship="Self.FK_NUB_LISTA_PRODUCTOS_TBL_PRODUCTO" FromRole="TBL_PRODUCTO" ToRole="NUB_LISTA_PRODUCTOS" />
+          <NavigationProperty Name="TBL_TIPO_PRODUCTO" Relationship="Self.FK_TBL_PRODUCTO_TBL_TIPO_PRODUCTO" FromRole="TBL_PRODUCTO" ToRole="TBL_TIPO_PRODUCTO" />
+          <NavigationProperty Name="TBL_STOCK" Relationship="Self.FK_TBL_STOCK_TBL_PRODUCTO1" FromRole="TBL_PRODUCTO" ToRole="TBL_STOCK" />
+        </EntityType>
+        <EntityType Name="TBL_RECEPCION">
+          <Key>
+            <PropertyRef Name="rcp_id" />
+          </Key>
+          <Property Name="rcp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usu_id" Type="Int32" Nullable="false" />
+          <Property Name="rcp_fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="TBL_USUARIO" Relationship="Self.FK_TBL_RECEPCION_TBL_USUARIO" FromRole="TBL_RECEPCION" ToRole="TBL_USUARIO" />
+          <NavigationProperty Name="TBL_STOCK" Relationship="Self.FK_TBL_STOCK_TBL_RECEPCION" FromRole="TBL_RECEPCION" ToRole="TBL_STOCK" />
+        </EntityType>
+        <EntityType Name="TBL_ROL">
+          <Key>
+            <PropertyRef Name="rol_id" />
+          </Key>
+          <Property Name="rol_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rol_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TBL_USUARIO" Relationship="Self.FK_TBL_USUARIO_TBL_ROL2" FromRole="TBL_ROL" ToRole="TBL_USUARIO" />
+        </EntityType>
+        <EntityType Name="TBL_STOCK">
+          <Key>
+            <PropertyRef Name="stk_id" />
+          </Key>
+          <Property Name="stk_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pro_id" Type="Int32" Nullable="false" />
+          <Property Name="tstk_id" Type="Int32" Nullable="false" />
+          <Property Name="rcp_id" Type="Int32" Nullable="false" />
+          <Property Name="ordn_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TBL_ORDEN_STOCK" Relationship="Self.FK_TBL_STOCK_TBL_ORDEN_STOCK" FromRole="TBL_STOCK" ToRole="TBL_ORDEN_STOCK" />
+          <NavigationProperty Name="TBL_PRODUCTO" Relationship="Self.FK_TBL_STOCK_TBL_PRODUCTO1" FromRole="TBL_STOCK" ToRole="TBL_PRODUCTO" />
+          <NavigationProperty Name="TBL_RECEPCION" Relationship="Self.FK_TBL_STOCK_TBL_RECEPCION" FromRole="TBL_STOCK" ToRole="TBL_RECEPCION" />
+          <NavigationProperty Name="TBL_TIPO_STOCK" Relationship="Self.FK_TBL_STOCK_TBL_TIPO_STOCK" FromRole="TBL_STOCK" ToRole="TBL_TIPO_STOCK" />
+        </EntityType>
+        <EntityType Name="TBL_TIPO_PRODUCTO">
+          <Key>
+            <PropertyRef Name="tprod_id" />
+          </Key>
+          <Property Name="tprod_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tprod_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TBL_PRODUCTO" Relationship="Self.FK_TBL_PRODUCTO_TBL_TIPO_PRODUCTO" FromRole="TBL_TIPO_PRODUCTO" ToRole="TBL_PRODUCTO" />
+        </EntityType>
+        <EntityType Name="TBL_TIPO_STOCK">
+          <Key>
+            <PropertyRef Name="tstk_id" />
+          </Key>
+          <Property Name="tstk_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tstk_nombre" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TBL_STOCK" Relationship="Self.FK_TBL_STOCK_TBL_TIPO_STOCK" FromRole="TBL_TIPO_STOCK" ToRole="TBL_STOCK" />
+        </EntityType>
+        <EntityType Name="TBL_USUARIO">
+          <Key>
+            <PropertyRef Name="usu_id" />
+          </Key>
+          <Property Name="usu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usu_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usu_rut" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usu_telefono" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="usu_correo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rol_id" Type="Int32" />
+          <Property Name="usu_clave" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TBL_LISTA_COMPRA" Relationship="Self.FK_TBL_LISTA_COMPRA_TBL_USUARIO" FromRole="TBL_USUARIO" ToRole="TBL_LISTA_COMPRA" />
+          <NavigationProperty Name="TBL_RECEPCION" Relationship="Self.FK_TBL_RECEPCION_TBL_USUARIO" FromRole="TBL_USUARIO" ToRole="TBL_RECEPCION" />
+          <NavigationProperty Name="TBL_ROL" Relationship="Self.FK_TBL_USUARIO_TBL_ROL2" FromRole="TBL_USUARIO" ToRole="TBL_ROL" />
+        </EntityType>
+        <Association Name="FK_NUB_LISTA_PRODUCTOS_TBL_LISTA_COMPRA">
+          <End Role="TBL_LISTA_COMPRA" Type="Self.TBL_LISTA_COMPRA" Multiplicity="1" />
+          <End Role="NUB_LISTA_PRODUCTOS" Type="Self.NUB_LISTA_PRODUCTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_LISTA_COMPRA">
+              <PropertyRef Name="lcom_id" />
+            </Principal>
+            <Dependent Role="NUB_LISTA_PRODUCTOS">
+              <PropertyRef Name="lcom_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUB_LISTA_PRODUCTOS_TBL_PRODUCTO">
+          <End Role="TBL_PRODUCTO" Type="Self.TBL_PRODUCTO" Multiplicity="1" />
+          <End Role="NUB_LISTA_PRODUCTOS" Type="Self.NUB_LISTA_PRODUCTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PRODUCTO">
+              <PropertyRef Name="pro_id" />
+            </Principal>
+            <Dependent Role="NUB_LISTA_PRODUCTOS">
+              <PropertyRef Name="pro_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_COMPRA_TBL_LISTA_COMPRA">
+          <End Role="TBL_LISTA_COMPRA" Type="Self.TBL_LISTA_COMPRA" Multiplicity="1" />
+          <End Role="TBL_COMPRA" Type="Self.TBL_COMPRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_LISTA_COMPRA">
+              <PropertyRef Name="lcom_id" />
+            </Principal>
+            <Dependent Role="TBL_COMPRA">
+              <PropertyRef Name="lcom_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_LISTA_COMPRA_TBL_USUARIO">
+          <End Role="TBL_USUARIO" Type="Self.TBL_USUARIO" Multiplicity="1" />
+          <End Role="TBL_LISTA_COMPRA" Type="Self.TBL_LISTA_COMPRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_USUARIO">
+              <PropertyRef Name="usu_id" />
+            </Principal>
+            <Dependent Role="TBL_LISTA_COMPRA">
+              <PropertyRef Name="usu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_STOCK_TBL_ORDEN_STOCK">
+          <End Role="TBL_ORDEN_STOCK" Type="Self.TBL_ORDEN_STOCK" Multiplicity="1" />
+          <End Role="TBL_STOCK" Type="Self.TBL_STOCK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_ORDEN_STOCK">
+              <PropertyRef Name="ordn_id" />
+            </Principal>
+            <Dependent Role="TBL_STOCK">
+              <PropertyRef Name="ordn_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_PRODUCTO_TBL_TIPO_PRODUCTO">
+          <End Role="TBL_TIPO_PRODUCTO" Type="Self.TBL_TIPO_PRODUCTO" Multiplicity="0..1" />
+          <End Role="TBL_PRODUCTO" Type="Self.TBL_PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_TIPO_PRODUCTO">
+              <PropertyRef Name="tprod_id" />
+            </Principal>
+            <Dependent Role="TBL_PRODUCTO">
+              <PropertyRef Name="tprod_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_STOCK_TBL_PRODUCTO1">
+          <End Role="TBL_PRODUCTO" Type="Self.TBL_PRODUCTO" Multiplicity="1" />
+          <End Role="TBL_STOCK" Type="Self.TBL_STOCK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PRODUCTO">
+              <PropertyRef Name="pro_id" />
+            </Principal>
+            <Dependent Role="TBL_STOCK">
+              <PropertyRef Name="pro_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_RECEPCION_TBL_USUARIO">
+          <End Role="TBL_USUARIO" Type="Self.TBL_USUARIO" Multiplicity="1" />
+          <End Role="TBL_RECEPCION" Type="Self.TBL_RECEPCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_USUARIO">
+              <PropertyRef Name="usu_id" />
+            </Principal>
+            <Dependent Role="TBL_RECEPCION">
+              <PropertyRef Name="usu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_STOCK_TBL_RECEPCION">
+          <End Role="TBL_RECEPCION" Type="Self.TBL_RECEPCION" Multiplicity="1" />
+          <End Role="TBL_STOCK" Type="Self.TBL_STOCK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_RECEPCION">
+              <PropertyRef Name="rcp_id" />
+            </Principal>
+            <Dependent Role="TBL_STOCK">
+              <PropertyRef Name="rcp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_USUARIO_TBL_ROL2">
+          <End Role="TBL_ROL" Type="Self.TBL_ROL" Multiplicity="0..1" />
+          <End Role="TBL_USUARIO" Type="Self.TBL_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_ROL">
+              <PropertyRef Name="rol_id" />
+            </Principal>
+            <Dependent Role="TBL_USUARIO">
+              <PropertyRef Name="rol_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_STOCK_TBL_TIPO_STOCK">
+          <End Role="TBL_TIPO_STOCK" Type="Self.TBL_TIPO_STOCK" Multiplicity="1" />
+          <End Role="TBL_STOCK" Type="Self.TBL_STOCK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_TIPO_STOCK">
+              <PropertyRef Name="tstk_id" />
+            </Principal>
+            <Dependent Role="TBL_STOCK">
+              <PropertyRef Name="tstk_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ABMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="NUB_LISTA_PRODUCTOS" EntityType="Self.NUB_LISTA_PRODUCTOS" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TBL_COMPRA" EntityType="Self.TBL_COMPRA" />
+          <EntitySet Name="TBL_LISTA_COMPRA" EntityType="Self.TBL_LISTA_COMPRA" />
+          <EntitySet Name="TBL_ORDEN_STOCK" EntityType="Self.TBL_ORDEN_STOCK" />
+          <EntitySet Name="TBL_PRODUCTO" EntityType="Self.TBL_PRODUCTO" />
+          <EntitySet Name="TBL_RECEPCION" EntityType="Self.TBL_RECEPCION" />
+          <EntitySet Name="TBL_ROL" EntityType="Self.TBL_ROL" />
+          <EntitySet Name="TBL_STOCK" EntityType="Self.TBL_STOCK" />
+          <EntitySet Name="TBL_TIPO_PRODUCTO" EntityType="Self.TBL_TIPO_PRODUCTO" />
+          <EntitySet Name="TBL_TIPO_STOCK" EntityType="Self.TBL_TIPO_STOCK" />
+          <EntitySet Name="TBL_USUARIO" EntityType="Self.TBL_USUARIO" />
+          <AssociationSet Name="FK_NUB_LISTA_PRODUCTOS_TBL_LISTA_COMPRA" Association="Self.FK_NUB_LISTA_PRODUCTOS_TBL_LISTA_COMPRA">
+            <End Role="TBL_LISTA_COMPRA" EntitySet="TBL_LISTA_COMPRA" />
+            <End Role="NUB_LISTA_PRODUCTOS" EntitySet="NUB_LISTA_PRODUCTOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUB_LISTA_PRODUCTOS_TBL_PRODUCTO" Association="Self.FK_NUB_LISTA_PRODUCTOS_TBL_PRODUCTO">
+            <End Role="TBL_PRODUCTO" EntitySet="TBL_PRODUCTO" />
+            <End Role="NUB_LISTA_PRODUCTOS" EntitySet="NUB_LISTA_PRODUCTOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_COMPRA_TBL_LISTA_COMPRA" Association="Self.FK_TBL_COMPRA_TBL_LISTA_COMPRA">
+            <End Role="TBL_LISTA_COMPRA" EntitySet="TBL_LISTA_COMPRA" />
+            <End Role="TBL_COMPRA" EntitySet="TBL_COMPRA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_LISTA_COMPRA_TBL_USUARIO" Association="Self.FK_TBL_LISTA_COMPRA_TBL_USUARIO">
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+            <End Role="TBL_LISTA_COMPRA" EntitySet="TBL_LISTA_COMPRA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_STOCK_TBL_ORDEN_STOCK" Association="Self.FK_TBL_STOCK_TBL_ORDEN_STOCK">
+            <End Role="TBL_ORDEN_STOCK" EntitySet="TBL_ORDEN_STOCK" />
+            <End Role="TBL_STOCK" EntitySet="TBL_STOCK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_PRODUCTO_TBL_TIPO_PRODUCTO" Association="Self.FK_TBL_PRODUCTO_TBL_TIPO_PRODUCTO">
+            <End Role="TBL_TIPO_PRODUCTO" EntitySet="TBL_TIPO_PRODUCTO" />
+            <End Role="TBL_PRODUCTO" EntitySet="TBL_PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_STOCK_TBL_PRODUCTO1" Association="Self.FK_TBL_STOCK_TBL_PRODUCTO1">
+            <End Role="TBL_PRODUCTO" EntitySet="TBL_PRODUCTO" />
+            <End Role="TBL_STOCK" EntitySet="TBL_STOCK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_RECEPCION_TBL_USUARIO" Association="Self.FK_TBL_RECEPCION_TBL_USUARIO">
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+            <End Role="TBL_RECEPCION" EntitySet="TBL_RECEPCION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_STOCK_TBL_RECEPCION" Association="Self.FK_TBL_STOCK_TBL_RECEPCION">
+            <End Role="TBL_RECEPCION" EntitySet="TBL_RECEPCION" />
+            <End Role="TBL_STOCK" EntitySet="TBL_STOCK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_USUARIO_TBL_ROL2" Association="Self.FK_TBL_USUARIO_TBL_ROL2">
+            <End Role="TBL_ROL" EntitySet="TBL_ROL" />
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_STOCK_TBL_TIPO_STOCK" Association="Self.FK_TBL_STOCK_TBL_TIPO_STOCK">
+            <End Role="TBL_TIPO_STOCK" EntitySet="TBL_TIPO_STOCK" />
+            <End Role="TBL_STOCK" EntitySet="TBL_STOCK" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ABMModelStoreContainer" CdmEntityContainer="ABMEntities">
+          <EntitySetMapping Name="NUB_LISTA_PRODUCTOS">
+            <EntityTypeMapping TypeName="ABMModel.NUB_LISTA_PRODUCTOS">
+              <MappingFragment StoreEntitySet="NUB_LISTA_PRODUCTOS">
+                <ScalarProperty Name="lpro_id" ColumnName="lpro_id" />
+                <ScalarProperty Name="pro_id" ColumnName="pro_id" />
+                <ScalarProperty Name="lcom_id" ColumnName="lcom_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ABMModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_COMPRA">
+            <EntityTypeMapping TypeName="ABMModel.TBL_COMPRA">
+              <MappingFragment StoreEntitySet="TBL_COMPRA">
+                <ScalarProperty Name="com_id" ColumnName="com_id" />
+                <ScalarProperty Name="com_cantidad" ColumnName="com_cantidad" />
+                <ScalarProperty Name="com_valor" ColumnName="com_valor" />
+                <ScalarProperty Name="lcom_id" ColumnName="lcom_id" />
+                <ScalarProperty Name="com_fecha_compra" ColumnName="com_fecha_compra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_LISTA_COMPRA">
+            <EntityTypeMapping TypeName="ABMModel.TBL_LISTA_COMPRA">
+              <MappingFragment StoreEntitySet="TBL_LISTA_COMPRA">
+                <ScalarProperty Name="lcom_id" ColumnName="lcom_id" />
+                <ScalarProperty Name="lcom_valor" ColumnName="lcom_valor" />
+                <ScalarProperty Name="usu_id" ColumnName="usu_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_ORDEN_STOCK">
+            <EntityTypeMapping TypeName="ABMModel.TBL_ORDEN_STOCK">
+              <MappingFragment StoreEntitySet="TBL_ORDEN_STOCK">
+                <ScalarProperty Name="ordn_id" ColumnName="ordn_id" />
+                <ScalarProperty Name="ordn_fecha" ColumnName="ordn_fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_PRODUCTO">
+            <EntityTypeMapping TypeName="ABMModel.TBL_PRODUCTO">
+              <MappingFragment StoreEntitySet="TBL_PRODUCTO">
+                <ScalarProperty Name="pro_id" ColumnName="pro_id" />
+                <ScalarProperty Name="pro_nombre" ColumnName="pro_nombre" />
+                <ScalarProperty Name="pro_detalle" ColumnName="pro_detalle" />
+                <ScalarProperty Name="pro_precio" ColumnName="pro_precio" />
+                <ScalarProperty Name="pro_stock" ColumnName="pro_stock" />
+                <ScalarProperty Name="tprod_id" ColumnName="tprod_id" />
+                <ScalarProperty Name="pro_disponibilidad" ColumnName="pro_disponibilidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_RECEPCION">
+            <EntityTypeMapping TypeName="ABMModel.TBL_RECEPCION">
+              <MappingFragment StoreEntitySet="TBL_RECEPCION">
+                <ScalarProperty Name="rcp_id" ColumnName="rcp_id" />
+                <ScalarProperty Name="usu_id" ColumnName="usu_id" />
+                <ScalarProperty Name="rcp_fecha" ColumnName="rcp_fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_ROL">
+            <EntityTypeMapping TypeName="ABMModel.TBL_ROL">
+              <MappingFragment StoreEntitySet="TBL_ROL">
+                <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+                <ScalarProperty Name="rol_nombre" ColumnName="rol_nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_STOCK">
+            <EntityTypeMapping TypeName="ABMModel.TBL_STOCK">
+              <MappingFragment StoreEntitySet="TBL_STOCK">
+                <ScalarProperty Name="stk_id" ColumnName="stk_id" />
+                <ScalarProperty Name="pro_id" ColumnName="pro_id" />
+                <ScalarProperty Name="tstk_id" ColumnName="tstk_id" />
+                <ScalarProperty Name="rcp_id" ColumnName="rcp_id" />
+                <ScalarProperty Name="ordn_id" ColumnName="ordn_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_TIPO_PRODUCTO">
+            <EntityTypeMapping TypeName="ABMModel.TBL_TIPO_PRODUCTO">
+              <MappingFragment StoreEntitySet="TBL_TIPO_PRODUCTO">
+                <ScalarProperty Name="tprod_id" ColumnName="tprod_id" />
+                <ScalarProperty Name="tprod_nombre" ColumnName="tprod_nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_TIPO_STOCK">
+            <EntityTypeMapping TypeName="ABMModel.TBL_TIPO_STOCK">
+              <MappingFragment StoreEntitySet="TBL_TIPO_STOCK">
+                <ScalarProperty Name="tstk_id" ColumnName="tstk_id" />
+                <ScalarProperty Name="tstk_nombre" ColumnName="tstk_nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_USUARIO">
+            <EntityTypeMapping TypeName="ABMModel.TBL_USUARIO">
+              <MappingFragment StoreEntitySet="TBL_USUARIO">
+                <ScalarProperty Name="usu_id" ColumnName="usu_id" />
+                <ScalarProperty Name="usu_nombre" ColumnName="usu_nombre" />
+                <ScalarProperty Name="usu_rut" ColumnName="usu_rut" />
+                <ScalarProperty Name="usu_telefono" ColumnName="usu_telefono" />
+                <ScalarProperty Name="usu_correo" ColumnName="usu_correo" />
+                <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+                <ScalarProperty Name="usu_clave" ColumnName="usu_clave" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
