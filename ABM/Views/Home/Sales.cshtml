@@ -1,28 +1,70 @@
 ﻿@{
-	ViewBag.Title = "Ofertas Destacadas";
+    ViewBag.Title = "Ofertas Destacadas";
 }
-<div class="right-align" style="padding-top:50px; margin-bottom:-30px">
-	<a href='@Url.Action("BestSellers", "Home")' class="waves-effect waves-light btn-small red" style="margin-right:11px; color:white">Los más vendidos</a>
+<div class="container">
+    <!--<div class="right-align" style="padding-top:50px; margin-bottom:-30px">
+        <a href='@Url.Action("BestSellers", "Home")' class="waves-effect waves-light btn-small red" style="margin-right:11px; color:white">Los más vendidos</a>
+    </div>-->
+    <!--<div id="showcase" class="row">
+        @for (int i = 0; i < 6; i++) {
+            <div class="col s12 m6 l4">
+                <div class="card">
+                    <div class="card-image">
+                        <i class="discount-figure">-13%</i>
+                        <img src='@Url.Content("~/Resources/Images/Examples/moto.png")' />
+                        <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></a>
+                    </div>
+                    <div class="card-content center">
+                        <span class="card-title">Moto Honda CB 190R 150cc</span>
+                        <p id="caption-offer">¡Oferta!</p>
+                        <p id="caption-offer-old-price">$250.000</p>
+                        <p id="caption-offer-new-price">$200.000</p>
+                    </div>
+                    <div class="card-action center-align">
+                        <a href='@Url.Action("Product", "Home")' style="margin-left:25px; color:darkblue">Detalles</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>-->
+    <div class="slider">
+        <ul class="slides">
+            <li>
+                <img src="https://lorempixel.com/580/250/nature/1"> <!-- random image -->
+                <!-- random image -->
+                <div class="caption center-align">
+                    <h3>This is our big Tagline!</h3>
+                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                </div>
+            </li>
+            <li>
+                <img src="https://lorempixel.com/580/250/nature/2"> <!-- random image -->
+                <div class="caption left-align">
+                    <h3>Left Aligned Caption</h3>
+                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                </div>
+            </li>
+            <li>
+                <img src="https://lorempixel.com/580/250/nature/3"> <!-- random image -->
+                <div class="caption right-align">
+                    <h3>Right Aligned Caption</h3>
+                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                </div>
+            </li>
+            <li>
+                <img src="https://lorempixel.com/580/250/nature/4"> <!-- random image -->
+                <div class="caption center-align">
+                    <h3>This is our big Tagline!</h3>
+                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                </div>
+            </li>
+        </ul>
+    </div>
 </div>
-<div id="showcase" class="row">
-	@for (int i = 0; i < 6; i++) {
-		<div class="col s12 m6 l4">
-			<div class="card">
-				<div class="card-image">
-					<i class="discount-figure">-13%</i>
-					<img src='@Url.Content("~/Resources/Images/Examples/moto.png")' />
-					<a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></a>
-				</div>
-				<div class="card-content center">
-					<span class="card-title">Moto Honda CB 190R 150cc</span>
-					<p id="caption-offer">¡Oferta!</p>
-					<p id="caption-offer-old-price">$250.000</p>
-					<p id="caption-offer-new-price">$200.000</p>
-				</div>
-				<div class="card-action center-align">
-					<a href='@Url.Action("Product", "Home")' style="margin-left:25px; color:darkblue">Detalles</a>
-				</div>
-			</div>
-		</div>
-	}
-</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.slider');
+        var instances = M.Slider.init(elems, options);
+    });
+
+</script>
