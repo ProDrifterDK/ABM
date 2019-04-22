@@ -1,8 +1,9 @@
 ﻿@{
     ViewBag.Title = "Ofertas Destacadas";
 }
-<div class="container">
-    <div class="slider" id="otronombre-slider">
+<div class="container center">
+    <h3 style="padding-top: 20px">Ofertas destacadas</h3>
+    <div class="slider" id="ofertas-slider">
         <ul class="slides">
             <li>
                 <img src="~/Resources/Images/Examples/car.png"> <!-- random image -->
@@ -19,7 +20,41 @@
                 </div>
             </li>
             <li>
-                <img src="~/Resources/Images/Examples/car.png"> <!-- random image -->
+                <img src="~/Resources/Images/Examples/hammer.png"> <!-- random image -->
+                <div class="caption right-align">
+                    <h3>Right Aligned Caption</h3>
+                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                </div>
+            </li>
+            <li>
+                <img src="~/Resources/Images/Examples/nail.png"> <!-- random image -->
+                <div class="caption center-align">
+                    <h3>This is our big Tagline!</h3>
+                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <h3>Los más vendidos</h3>
+    <div class="slider" id="masvendidos-slider">
+        <ul class="slides">
+            <li>
+                <img src="~/Resources/Images/Examples/drill.png"> <!-- random image -->
+                <div class="caption center-align">
+                    <h3>This is our big Tagline!</h3>
+                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                </div>
+            </li>
+            <li>
+                <img src="~/Resources/Images/Examples/wheel.png"> <!-- random image -->
+                <div class="caption left-align">
+                    <h3>Left Aligned Caption</h3>
+                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                </div>
+            </li>
+            <li>
+                <img src="~/Resources/Images/Examples/nail.png"> <!-- random image -->
                 <div class="caption right-align">
                     <h3>Right Aligned Caption</h3>
                     <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
@@ -35,21 +70,16 @@
         </ul>
     </div>
 
-    <div class="carousel">
-        <a class="carousel-item" href="#one!"><img src="https://lorempixel.com/250/250/nature/1"></a>
-        <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/250/250/nature/2"></a>
-        <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/250/250/nature/3"></a>
-        <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/250/250/nature/4"></a>
-        <a class="carousel-item" href="#five!"><img src="https://lorempixel.com/250/250/nature/5"></a>
-    </div>
 </div>
 @section scripts {
     <script>
 
 
         $(document).ready(function () {
-            $('.carousel').carousel();
-            $("#otronombre-slider").slider();
+            $("#ofertas-slider").slider({
+                interval: 8000
+            });
+            $("#masvendidos-slider").slider();
         });
     </script>
 }
