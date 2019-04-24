@@ -7,5 +7,6 @@ using System.Web.Mvc;
 namespace ABM.Controllers {
 	public class CustomerController : Controller {
 		public ActionResult UserProfile() => this.View();
-	}
+        public ActionResult ShoppingCart() => this.View();
+    }
 }

@@ -183,6 +183,8 @@
     <Content Include="Views\Customer\UserProfile.cshtml" />
     <Content Include="Views\Home\Product.cshtml" />
     <Content Include="Views\Home\Description.cshtml" />
+    <Content Include="Views\Customer\ShoppingCart.cshtml" />
+    <Content Include="Views\Shared\_LayoutShoppingCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

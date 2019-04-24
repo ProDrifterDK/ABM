@@ -28,7 +28,7 @@
     </ul>
 
 
-    <nav id="main-nav-mobile-and-tablet" class="no-shadows deep-purple">
+    <nav id="main-nav-mobile-and-tablet" class="no-shadows blue">
         <div id="main-navbar" class="nav-wrapper row">
             <div class="nav-wrapper col s2 m2 l2">
                 <a href="#" data-target="main-menu" class="sidenav-trigger show-on-small"><i class="material-icons">menu</i></a>
@@ -38,20 +38,8 @@
             <div class="nav-wrapper col s7 m7 l7">
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
                     <li><a href="@Url.Action("Sales", "Home")">Inicio</a></li>
-                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Categorias<i class="material-icons right">arrow_drop_down</i></a></li>
-                    <li><a href="#">Soporte ABM</a></li>
                     <li><a href="#">Nuestra tienda</a></li>
                 </ul>
-            </div>
-            <div class="nav-wrapper col s2 m2 l1">
-                <div class="row">
-                    <div class="col s6 m6 right-align">
-                        <a href="@Url.Action("ShoppingCart", "Customer")"><i class="material-icons">shopping_cart</i></a>
-                    </div>
-                    <div class="col s6 m6 left-align">
-                        <text id="shopping-cart-quantity">(0)</text>
-                    </div>
-                </div>
             </div>
             <div class="nav-wrapper col s2 m2 l2">
                 <div class="row">
@@ -66,72 +54,9 @@
         </div>
     </nav>
     <div id="main" class="container body-content">
-        <ul class="sidenav" id="main-menu"></ul>
-        <div id="modal-search" class="modal">
-            <div class="modal-content">
-                <!-- Desktop-->
-                <div class="row hide-on-med-and-down center">
-                    <div class="col s2">
-                        <div class="chip">
-                            <a href="#" style="text-decoration:none;">Herramientas</a>
-                        </div>
-                    </div>
-                    <div class="col s2">
-                        <div class="chip">
-                            <a href="#" style="text-decoration:none;">Neumáticos</a>
-                        </div>
-                    </div>
-                    <div class="col s2">
-                        <div class="chip">
-                            <a href="#" style="text-decoration:none;">Llantas</a>
-                        </div>
-                    </div>
-                    <div class="col s2">
-                        <div class="chip">
-                            <a href="#" style="text-decoration:none;">Llaves</a>
-                        </div>
-                    </div>
-                    <div class="col s2">
-                        <div class="chip">
-                            <a href="#" style="text-decoration:none;">Martillos</a>
-                        </div>
-                    </div>
-                    <div class="col s2">
-                        <div class="chip">
-                            <a href="#" style="text-decoration:none;">Luces</a>
-                        </div>
-                    </div>
-                </div>
-                <!--Mobile-->
-                <div class="row hide-on-large-only">
-                    <a class="dropdown-trigger" href="#!" data-target="dropdown2">Categorias<i class="material-icons right">arrow_drop_down</i></a>
-                </div>
-                <h5 class="center">Ingrese su búsqueda</h5>
-                <div class="row">
-                    <form class="col s12 m12 l12">
-                        <div class="row">
-                            <div class="input-field col s12 m12 l12">
-                                <div class="row">
-                                    <div class="col s1 m1 l1 center-align">
-                                        <label class="label-icon prefix" for="search"><i class="material-icons">search</i></label>
-                                    </div>
-                                    <div class="col s11 m11 l11">
-                                        <input id="search" type="search" required>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
         @RenderBody()
-        <div class="fixed-action-btn click-to-toggle">
-            <a href="#modal-search" id="floating-button" class="waves-effect waves-light modal-trigger btn-floating btn-large red pulse">
-                <i class="large material-icons">search</i>
-            </a>
-        </div>
     </div>
+
     <footer class="page-footer blue-grey darken-4">
         <div class="container">
             <div class="row">
@@ -172,6 +97,7 @@
     </footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/materialize")
+
     @RenderSection("scripts", required: false)
     <script>
         $(document).ready(function () {
