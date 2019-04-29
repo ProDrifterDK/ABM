@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Services3, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Services3.3.0.0.0\lib\net20\Microsoft.Web.Services3.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -99,8 +107,8 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Transbank, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TransbankSDK.2.2.0\lib\net452\Transbank.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -109,6 +117,10 @@
     <Reference Include="Antlr3.Runtime">
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Webpay.Transbank.Library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\webpay-sdk-net-2.0.1\Transbank.NET\bin\Webpay.Transbank.Library.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -123,8 +135,14 @@
     <Compile Include="Areas\Administracion\AdministracionAreaRegistration.cs" />
     <Compile Include="Areas\Administracion\Controllers\HomeAdminController.cs" />
     <Compile Include="Base\BaseController.cs" />
+    <Compile Include="certficates\cert-capture.cs" />
+    <Compile Include="certficates\cert-complete.cs" />
+    <Compile Include="certficates\cert-normal-mall.cs" />
+    <Compile Include="certficates\cert-normal.cs" />
+    <Compile Include="certficates\cert-oneclick.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\PagoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -141,6 +159,20 @@
     <Content Include="Areas\Administracion\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Administracion\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Administracion\Views\HomeAdmin\Index.cshtml" />
+    <Content Include="certficates\597020000541\597020000541.pfx" />
+    <Content Include="certficates\597020000541\tbk.pem" />
+    <Content Include="certficates\597020000542\597020000542.pfx" />
+    <Content Include="certficates\597020000542\tbk.pem" />
+    <Content Include="certficates\597020000545\597020000545.pfx" />
+    <Content Include="certficates\597020000545\tbk.pem" />
+    <Content Include="certficates\597020000546\597020000546.pfx" />
+    <Content Include="certficates\597020000546\tbk.pem" />
+    <Content Include="certficates\597020000547\597020000547.pfx" />
+    <Content Include="certficates\597020000547\tbk.pem" />
+    <Content Include="certficates\597020000548\597020000548.pfx" />
+    <Content Include="certficates\597020000548\tbk.pem" />
+    <Content Include="certficates\597020000584\597020000584.pfx" />
+    <Content Include="certficates\597020000584\tbk.pem" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Resources\Images\background-color-nav.png" />
     <Content Include="Resources\Images\background-div.png" />
@@ -180,6 +212,9 @@
     <Content Include="Views\Customer\UserProfile.cshtml" />
     <Content Include="Views\Home\Product.cshtml" />
     <Content Include="Views\Home\Description.cshtml" />
+    <Content Include="Views\Customer\Pagar.cshtml" />
+    <Content Include="Views\Pago\Pagar.cshtml" />
+    <Content Include="Views\Pago\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

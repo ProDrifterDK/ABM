@@ -27,7 +27,9 @@ namespace ABM.Datos.SQL
     
         public virtual DbSet<NUB_LISTA_PRODUCTOS> NUB_LISTA_PRODUCTOS { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<TBL_CARRO_COMPRA> TBL_CARRO_COMPRA { get; set; }
         public virtual DbSet<TBL_COMPRA> TBL_COMPRA { get; set; }
+        public virtual DbSet<TBL_ESTADO_CARRO> TBL_ESTADO_CARRO { get; set; }
         public virtual DbSet<TBL_LISTA_COMPRA> TBL_LISTA_COMPRA { get; set; }
         public virtual DbSet<TBL_ORDEN_STOCK> TBL_ORDEN_STOCK { get; set; }
         public virtual DbSet<TBL_PRODUCTO> TBL_PRODUCTO { get; set; }

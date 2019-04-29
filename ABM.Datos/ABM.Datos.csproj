@@ -72,7 +72,13 @@
     <Compile Include="SQL\sysdiagram.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="SQL\TBL_CARRO_COMPRA.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="SQL\TBL_COMPRA.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SQL\TBL_ESTADO_CARRO.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="SQL\TBL_LISTA_COMPRA.cs">

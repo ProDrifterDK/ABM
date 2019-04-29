@@ -1,0 +1,80 @@
+﻿@model ABM.Datos.SQL.TBL_USUARIO
+
+@{
+    ViewBag.Title = "Pagar";
+}
+<!-- Contenido -->
+
+<div class="row">
+    <p>kill</p>
+    <p>kill</p>
+    <p>kill</p>
+    <p>kill</p>
+    <p>kill</p>
+    <p>kill</p>
+    <p>kill</p>
+    <p>kill</p>
+</div>
+<form id="formWebPay" method="post" action="@ViewBag.Url">
+    <input id="token" type="hidden" name="token_ws" value="@ViewBag.Token" />
+</form>
+
+<script>
+
+    $(document).ready(function () {
+        CargarGrilla();
+        if ('@ViewBag.Mensaje' != '') {
+            MostrarMensaje('@ViewBag.Mensaje', '@ViewBag.Error');
+        }
+
+        if ('@ViewBag.Error' == 'False') {
+            $('#formWebPay').submit();
+		}
+    })
+
+    function MostrarMensaje(mensaje, error) {
+        $('#mensaje').html('@ViewBag.Mensaje');
+        $('#mensaje').css('display', 'block');
+        if(error == 'True')
+            $('#mensaje').addClass('red');
+        else
+            $('#mensaje').addClass('green');
+    }
+
+    $('#test0').change(function () {
+        var checkboxes = $(this).closest('table').find(':checkbox');
+        if ($(this).is(':checked')) {
+            checkboxes.prop('checked', true);
+        } else {
+            checkboxes.prop('checked', false);
+        }
+    });
+
+    function Pagar() {
+        var checked = [];
+        var inputs = $('#tabla-deuda tbody tr td input:checked');
+        inputs.each(function (i, data) {
+            var padre = $(data).parent().parent();
+            var id = $(padre).attr('id');
+            var num = id.replace(/^\D+/g, '');
+            checked.push(num);
+        });
+
+        $.ajax({
+            type: 'post',
+            url: '@Url.Action("GetToken")',
+            data: { Deudas: checked, rut: '@Model.usu_rut' },
+            success: function (data) {
+                if (data.exito) {
+                    $('#token').val(data.data.result.token);
+                    $('#formWebPay').attr('action', data.data.result.url);
+                    $('#formWebPay').submit();
+                } else {
+                    if (data.mensaje) {
+                        Resyst.Error(data.mensaje);
+                    }
+                }
+            },
+        })
+    }
+</script>

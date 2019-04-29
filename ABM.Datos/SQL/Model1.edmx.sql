@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/18/2019 00:15:13
+-- Date Created: 04/25/2019 18:14:13
 -- Generated from EDMX file: D:\Resyst\ABM\ABM.Datos\SQL\Model1.edmx
 -- --------------------------------------------------
 
@@ -22,6 +22,12 @@ IF OBJECT_ID(N'[dbo].[FK_NUB_LISTA_PRODUCTOS_TBL_LISTA_COMPRA]', 'F') IS NOT NUL
 GO
 IF OBJECT_ID(N'[dbo].[FK_NUB_LISTA_PRODUCTOS_TBL_PRODUCTO]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[NUB_LISTA_PRODUCTOS] DROP CONSTRAINT [FK_NUB_LISTA_PRODUCTOS_TBL_PRODUCTO];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TBL_CARRO_COMPRA_TBL_ESTADO_CARRO]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TBL_CARRO_COMPRA] DROP CONSTRAINT [FK_TBL_CARRO_COMPRA_TBL_ESTADO_CARRO];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TBL_COMPRA_TBL_CARRO_COMPRA]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TBL_COMPRA] DROP CONSTRAINT [FK_TBL_COMPRA_TBL_CARRO_COMPRA];
 GO
 IF OBJECT_ID(N'[dbo].[FK_TBL_COMPRA_TBL_LISTA_COMPRA]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[TBL_COMPRA] DROP CONSTRAINT [FK_TBL_COMPRA_TBL_LISTA_COMPRA];
@@ -61,8 +67,14 @@ GO
 IF OBJECT_ID(N'[dbo].[sysdiagrams]', 'U') IS NOT NULL
     DROP TABLE [dbo].[sysdiagrams];
 GO
+IF OBJECT_ID(N'[dbo].[TBL_CARRO_COMPRA]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TBL_CARRO_COMPRA];
+GO
 IF OBJECT_ID(N'[dbo].[TBL_COMPRA]', 'U') IS NOT NULL
     DROP TABLE [dbo].[TBL_COMPRA];
+GO
+IF OBJECT_ID(N'[dbo].[TBL_ESTADO_CARRO]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TBL_ESTADO_CARRO];
 GO
 IF OBJECT_ID(N'[dbo].[TBL_LISTA_COMPRA]', 'U') IS NOT NULL
     DROP TABLE [dbo].[TBL_LISTA_COMPRA];
@@ -120,7 +132,8 @@ CREATE TABLE [dbo].[TBL_COMPRA] (
     [com_cantidad] int  NOT NULL,
     [com_valor] int  NOT NULL,
     [lcom_id] int  NOT NULL,
-    [com_fecha_compra] datetime  NULL
+    [com_fecha_compra] datetime  NULL,
+    [car_id] int  NULL
 );
 GO
 
@@ -202,6 +215,28 @@ CREATE TABLE [dbo].[TBL_USUARIO] (
 );
 GO
 
+-- Creating table 'TBL_CARRO_COMPRA'
+CREATE TABLE [dbo].[TBL_CARRO_COMPRA] (
+    [CAR_ID] int IDENTITY(1,1) NOT NULL,
+    [CAR_TOKEN] varchar(100)  NULL,
+    [CAR_MONTO] int  NULL,
+    [CEST_ESTADO] int  NOT NULL,
+    [CAR_CODIGO_AUTORIZACION] varchar(500)  NULL,
+    [CAR_CODIGO_COMERCIO] varchar(500)  NULL,
+    [CAR_ORDEN_COMPRA] varchar(500)  NULL,
+    [CAR_SESSION_ID] varchar(500)  NULL,
+    [CAS_ERROR] varchar(500)  NULL
+);
+GO
+
+-- Creating table 'TBL_ESTADO_CARRO'
+CREATE TABLE [dbo].[TBL_ESTADO_CARRO] (
+    [CEST_ID] int  NOT NULL,
+    [CEST_NOMBRE] varchar(50)  NOT NULL,
+    [CEST_VIGENTE] bit  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -276,6 +311,18 @@ GO
 ALTER TABLE [dbo].[TBL_USUARIO]
 ADD CONSTRAINT [PK_TBL_USUARIO]
     PRIMARY KEY CLUSTERED ([usu_id] ASC);
+GO
+
+-- Creating primary key on [CAR_ID] in table 'TBL_CARRO_COMPRA'
+ALTER TABLE [dbo].[TBL_CARRO_COMPRA]
+ADD CONSTRAINT [PK_TBL_CARRO_COMPRA]
+    PRIMARY KEY CLUSTERED ([CAR_ID] ASC);
+GO
+
+-- Creating primary key on [CEST_ID] in table 'TBL_ESTADO_CARRO'
+ALTER TABLE [dbo].[TBL_ESTADO_CARRO]
+ADD CONSTRAINT [PK_TBL_ESTADO_CARRO]
+    PRIMARY KEY CLUSTERED ([CEST_ID] ASC);
 GO
 
 -- --------------------------------------------------
@@ -445,6 +492,36 @@ GO
 CREATE INDEX [IX_FK_TBL_STOCK_TBL_TIPO_STOCK]
 ON [dbo].[TBL_STOCK]
     ([tstk_id]);
+GO
+
+-- Creating foreign key on [CEST_ESTADO] in table 'TBL_CARRO_COMPRA'
+ALTER TABLE [dbo].[TBL_CARRO_COMPRA]
+ADD CONSTRAINT [FK_TBL_CARRO_COMPRA_TBL_ESTADO_CARRO]
+    FOREIGN KEY ([CEST_ESTADO])
+    REFERENCES [dbo].[TBL_ESTADO_CARRO]
+        ([CEST_ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TBL_CARRO_COMPRA_TBL_ESTADO_CARRO'
+CREATE INDEX [IX_FK_TBL_CARRO_COMPRA_TBL_ESTADO_CARRO]
+ON [dbo].[TBL_CARRO_COMPRA]
+    ([CEST_ESTADO]);
+GO
+
+-- Creating foreign key on [car_id] in table 'TBL_COMPRA'
+ALTER TABLE [dbo].[TBL_COMPRA]
+ADD CONSTRAINT [FK_TBL_COMPRA_TBL_CARRO_COMPRA]
+    FOREIGN KEY ([car_id])
+    REFERENCES [dbo].[TBL_CARRO_COMPRA]
+        ([CAR_ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TBL_COMPRA_TBL_CARRO_COMPRA'
+CREATE INDEX [IX_FK_TBL_COMPRA_TBL_CARRO_COMPRA]
+ON [dbo].[TBL_COMPRA]
+    ([car_id]);
 GO
 
 -- --------------------------------------------------
