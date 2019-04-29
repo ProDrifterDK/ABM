@@ -5,7 +5,7 @@
 -- Date Created: 04/25/2019 18:14:13
 -- Generated from EDMX file: D:\Resyst\ABM\ABM.Datos\SQL\Model1.edmx
 -- --------------------------------------------------
-
+CREATE DATABASE ABM
 SET QUOTED_IDENTIFIER OFF;
 GO
 USE [ABM];

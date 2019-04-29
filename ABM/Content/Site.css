@@ -88,6 +88,10 @@
     
 }
 
+#main-user-profile {
+	padding-top: 56px;
+}
+
 #nav-search {
 	position: fixed;
 	z-index: 100;
