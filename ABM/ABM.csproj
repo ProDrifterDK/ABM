@@ -120,7 +120,7 @@
     </Reference>
     <Reference Include="Webpay.Transbank.Library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\webpay-sdk-net-2.0.1\Transbank.NET\bin\Webpay.Transbank.Library.dll</HintPath>
+      <HintPath>certficates\Webpay.Transbank.Library.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
