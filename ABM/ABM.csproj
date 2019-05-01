@@ -140,6 +140,7 @@
     <Compile Include="certficates\cert-normal-mall.cs" />
     <Compile Include="certficates\cert-normal.cs" />
     <Compile Include="certficates\cert-oneclick.cs" />
+    <Compile Include="Controllers\CuentaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\PagoController.cs" />
@@ -173,6 +174,7 @@
     <Content Include="certficates\597020000548\tbk.pem" />
     <Content Include="certficates\597020000584\597020000584.pfx" />
     <Content Include="certficates\597020000584\tbk.pem" />
+    <Content Include="Areas\Administracion\Views\HomeAdmin\AdministradorProductos.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Resources\Images\background-color-nav.png" />
     <Content Include="Resources\Images\background-div.png" />
@@ -226,6 +228,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administracion\Models\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Cuenta\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

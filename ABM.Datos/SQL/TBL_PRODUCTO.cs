@@ -26,6 +26,8 @@ namespace ABM.Datos.SQL
         public string pro_detalle { get; set; }
         public int pro_precio { get; set; }
         public int pro_stock { get; set; }
+        public Nullable<int> pro_critico { get; set; }
+        public string pro_precio_oferta { get; set; }
         public Nullable<int> tprod_id { get; set; }
         public int pro_disponibilidad { get; set; }
     

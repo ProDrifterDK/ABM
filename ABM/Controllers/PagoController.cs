@@ -52,7 +52,7 @@ namespace ABM.Controllers
             codes.Add("-7", "Excede límite diario por transacción");
             codes.Add("-8", "Rubro no autorizado");
 
-            if (aaction == "Deudas")
+            if (string.IsNullOrEmpty(aaction))
                 aaction = "result";
 
             switch (aaction)

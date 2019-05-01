@@ -70,6 +70,7 @@
           </Key>
           <Property Name="ordn_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ordn_fecha" Type="datetime" Nullable="false" />
+          <Property Name="usu_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="TBL_PRODUCTO">
           <Key>
@@ -80,6 +81,8 @@
           <Property Name="pro_detalle" Type="varchar" MaxLength="500" />
           <Property Name="pro_precio" Type="int" Nullable="false" />
           <Property Name="pro_stock" Type="int" Nullable="false" />
+          <Property Name="pro_critico" Type="int" />
+          <Property Name="pro_precio_oferta" Type="nchar" MaxLength="10" />
           <Property Name="tprod_id" Type="int" />
           <Property Name="pro_disponibilidad" Type="int" Nullable="false" />
         </EntityType>
@@ -202,6 +205,18 @@
               <PropertyRef Name="usu_id" />
             </Principal>
             <Dependent Role="TBL_LISTA_COMPRA">
+              <PropertyRef Name="usu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_ORDEN_STOCK_TBL_USUARIO">
+          <End Role="TBL_USUARIO" Type="Self.TBL_USUARIO" Multiplicity="1" />
+          <End Role="TBL_ORDEN_STOCK" Type="Self.TBL_ORDEN_STOCK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_USUARIO">
+              <PropertyRef Name="usu_id" />
+            </Principal>
+            <Dependent Role="TBL_ORDEN_STOCK">
               <PropertyRef Name="usu_id" />
             </Dependent>
           </ReferentialConstraint>
@@ -329,6 +344,10 @@
             <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
             <End Role="TBL_LISTA_COMPRA" EntitySet="TBL_LISTA_COMPRA" />
           </AssociationSet>
+          <AssociationSet Name="FK_TBL_ORDEN_STOCK_TBL_USUARIO" Association="Self.FK_TBL_ORDEN_STOCK_TBL_USUARIO">
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+            <End Role="TBL_ORDEN_STOCK" EntitySet="TBL_ORDEN_STOCK" />
+          </AssociationSet>
           <AssociationSet Name="FK_TBL_PRODUCTO_TBL_TIPO_PRODUCTO" Association="Self.FK_TBL_PRODUCTO_TBL_TIPO_PRODUCTO">
             <End Role="TBL_TIPO_PRODUCTO" EntitySet="TBL_TIPO_PRODUCTO" />
             <End Role="TBL_PRODUCTO" EntitySet="TBL_PRODUCTO" />
@@ -400,6 +419,10 @@
           <AssociationSet Name="FK_TBL_LISTA_COMPRA_TBL_USUARIO" Association="ABMModel.FK_TBL_LISTA_COMPRA_TBL_USUARIO">
             <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
             <End Role="TBL_LISTA_COMPRA" EntitySet="TBL_LISTA_COMPRA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_ORDEN_STOCK_TBL_USUARIO" Association="ABMModel.FK_TBL_ORDEN_STOCK_TBL_USUARIO">
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+            <End Role="TBL_ORDEN_STOCK" EntitySet="TBL_ORDEN_STOCK" />
           </AssociationSet>
           <AssociationSet Name="FK_TBL_STOCK_TBL_ORDEN_STOCK" Association="ABMModel.FK_TBL_STOCK_TBL_ORDEN_STOCK">
             <End Role="TBL_ORDEN_STOCK" EntitySet="TBL_ORDEN_STOCK" />
@@ -505,6 +528,8 @@
           </Key>
           <Property Name="ordn_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ordn_fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usu_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TBL_USUARIO" Relationship="ABMModel.FK_TBL_ORDEN_STOCK_TBL_USUARIO" FromRole="TBL_ORDEN_STOCK" ToRole="TBL_USUARIO" />
           <NavigationProperty Name="TBL_STOCK" Relationship="ABMModel.FK_TBL_STOCK_TBL_ORDEN_STOCK" FromRole="TBL_ORDEN_STOCK" ToRole="TBL_STOCK" />
         </EntityType>
         <EntityType Name="TBL_PRODUCTO">
@@ -516,6 +541,8 @@
           <Property Name="pro_detalle" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="pro_precio" Type="Int32" Nullable="false" />
           <Property Name="pro_stock" Type="Int32" Nullable="false" />
+          <Property Name="pro_critico" Type="Int32" />
+          <Property Name="pro_precio_oferta" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="tprod_id" Type="Int32" />
           <Property Name="pro_disponibilidad" Type="Int32" Nullable="false" />
           <NavigationProperty Name="NUB_LISTA_PRODUCTOS" Relationship="ABMModel.FK_NUB_LISTA_PRODUCTOS_TBL_PRODUCTO" FromRole="TBL_PRODUCTO" ToRole="NUB_LISTA_PRODUCTOS" />
@@ -582,6 +609,7 @@
           <Property Name="rol_id" Type="Int32" />
           <Property Name="usu_clave" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="TBL_LISTA_COMPRA" Relationship="ABMModel.FK_TBL_LISTA_COMPRA_TBL_USUARIO" FromRole="TBL_USUARIO" ToRole="TBL_LISTA_COMPRA" />
+          <NavigationProperty Name="TBL_ORDEN_STOCK" Relationship="ABMModel.FK_TBL_ORDEN_STOCK_TBL_USUARIO" FromRole="TBL_USUARIO" ToRole="TBL_ORDEN_STOCK" />
           <NavigationProperty Name="TBL_RECEPCION" Relationship="ABMModel.FK_TBL_RECEPCION_TBL_USUARIO" FromRole="TBL_USUARIO" ToRole="TBL_RECEPCION" />
           <NavigationProperty Name="TBL_ROL" Relationship="ABMModel.FK_TBL_USUARIO_TBL_ROL2" FromRole="TBL_USUARIO" ToRole="TBL_ROL" />
         </EntityType>
@@ -653,6 +681,18 @@
               <PropertyRef Name="usu_id" />
             </Principal>
             <Dependent Role="TBL_LISTA_COMPRA">
+              <PropertyRef Name="usu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_ORDEN_STOCK_TBL_USUARIO">
+          <End Type="ABMModel.TBL_USUARIO" Role="TBL_USUARIO" Multiplicity="1" />
+          <End Type="ABMModel.TBL_ORDEN_STOCK" Role="TBL_ORDEN_STOCK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_USUARIO">
+              <PropertyRef Name="usu_id" />
+            </Principal>
+            <Dependent Role="TBL_ORDEN_STOCK">
               <PropertyRef Name="usu_id" />
             </Dependent>
           </ReferentialConstraint>
@@ -741,7 +781,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -815,6 +855,7 @@
           <EntitySetMapping Name="TBL_ORDEN_STOCK">
             <EntityTypeMapping TypeName="ABMModel.TBL_ORDEN_STOCK">
               <MappingFragment StoreEntitySet="TBL_ORDEN_STOCK">
+                <ScalarProperty Name="usu_id" ColumnName="usu_id" />
                 <ScalarProperty Name="ordn_fecha" ColumnName="ordn_fecha" />
                 <ScalarProperty Name="ordn_id" ColumnName="ordn_id" />
               </MappingFragment>
@@ -825,6 +866,8 @@
               <MappingFragment StoreEntitySet="TBL_PRODUCTO">
                 <ScalarProperty Name="pro_disponibilidad" ColumnName="pro_disponibilidad" />
                 <ScalarProperty Name="tprod_id" ColumnName="tprod_id" />
+                <ScalarProperty Name="pro_precio_oferta" ColumnName="pro_precio_oferta" />
+                <ScalarProperty Name="pro_critico" ColumnName="pro_critico" />
                 <ScalarProperty Name="pro_stock" ColumnName="pro_stock" />
                 <ScalarProperty Name="pro_precio" ColumnName="pro_precio" />
                 <ScalarProperty Name="pro_detalle" ColumnName="pro_detalle" />

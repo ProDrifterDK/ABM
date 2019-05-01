@@ -22,7 +22,9 @@ namespace ABM.Datos.SQL
     
         public int ordn_id { get; set; }
         public System.DateTime ordn_fecha { get; set; }
+        public int usu_id { get; set; }
     
+        public virtual TBL_USUARIO TBL_USUARIO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBL_STOCK> TBL_STOCK { get; set; }
     }
