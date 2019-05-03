@@ -32,10 +32,20 @@
 	font-size: small;
 }
 
-#caption-description-offer {
-	color: tomato;
+#caption-description-normal-price {
 	font-weight: 700;
 	font-size: large;
+}
+
+#caption-description-offer {
+	color: forestgreen;
+	font-weight: 700;
+	font-size: large;
+}
+
+#caption-description-time-left {
+	color: tomato;
+	font-weight: 700;
 }
 
 #caption-offer {
@@ -45,6 +55,7 @@
 
 #caption-offer-new-price {
 	font-weight: 700;
+	color: tomato;
 }
 
 #caption-offer-old-price {
