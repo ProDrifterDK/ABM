@@ -29,7 +29,12 @@
 	<div class="modal-content">
 		<h4>Editando producto: {Nombre del Producto}</h4>
 		<form>
+			<!-- TODO Ver campos especiales para cada tipo de producto -->
 			<div class="row">
+				<div class="input-field col s12 m12 l12">
+					<input placeholder="Código" id="codigo" type="text" class="validate">
+					<label for="codigo">Código del producto</label>
+				</div>
 				<div class="input-field col s12 m12 l12">
 					<input placeholder="Nombre" id="nombre" type="text" class="validate">
 					<label for="nombre">Nombre del producto</label>
@@ -82,10 +87,12 @@
 	</div>
 </div>
 
-<!-- TODO Arreglar "Stotock" por "Stock" -->
-<!-- TODO Agregar tiempo restante para el stock -->
-<!-- TODO Agregar visibilidad de los productos-->
-<!-- TODO Agregar categoría del producto -->
+<!-- TODO Script: Arreglar "Stotock" por "Stock" -->
+<!-- TODO Script: Agregar tiempo restante para el stock -->
+<!-- TODO Script: Agregar visibilidad de los productos-->
+<!-- TODO Script: Agregar categoría del producto -->
+<!-- TODO Script: Agregar código del producto -->
+<!-- TODO Script: Agregar los campos correspondientes al tipo del producto -->
 <script>
     $('#tblResultado').DataTable({
         info: true,
