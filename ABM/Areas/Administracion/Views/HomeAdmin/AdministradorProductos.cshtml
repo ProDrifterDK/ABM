@@ -23,14 +23,26 @@
 	</thead>
 </table>
 
+<!-- TODO Remover este botón de prueba cuando llegue el momento -->
 <a class="waves-effect waves-light btn modal-trigger" href="#producto">Modal de edición</a>
 
 <div id="producto" class="modal modal-fixed-footer">
 	<div class="modal-content">
 		<h4>Editando producto: {Nombre del Producto}</h4>
 		<form>
-			<!-- TODO Ver campos especiales para cada tipo de producto -->
-			<div class="row">
+			<div class="row center">
+				<img class="materialboxed center" width="300" src="~/Resources/Images/Examples/drill.png">
+				<div class="input-field col s12 m12 l12">
+					<div class="file-field input-field">
+						<div class="btn">
+							<span>Subir imagen</span>
+							<input type="file">
+						</div>
+						<div class="file-path-wrapper">
+							<input class="file-path validate" type="text">
+						</div>
+					</div>
+				</div>
 				<div class="input-field col s12 m12 l12">
 					<input placeholder="Código" id="codigo" type="text" class="validate">
 					<label for="codigo">Código del producto</label>
@@ -38,6 +50,36 @@
 				<div class="input-field col s12 m12 l12">
 					<input placeholder="Nombre" id="nombre" type="text" class="validate">
 					<label for="nombre">Nombre del producto</label>
+				</div>
+				<div class="row">
+					<div class="input-field col s12 m12 l12">
+						<textarea id="descripcion" class="materialize-textarea"></textarea>
+						<label for="descripcion">Descripción del producto</label>
+					</div>
+				</div>
+				<div class="input-field col s12 m4 l4">
+					<input placeholder="Precio" id="precio" type="text" class="validate">
+					<label for="precio">Precio del producto</label>
+				</div>
+				<div class="input-field col s12 m4 l4">
+					<input placeholder="Precio de oferta" id="precio-oferta" type="text" class="validate">
+					<label for="precio-oferta">Precio de oferta del producto</label>
+				</div>
+				<!-- TODO Arreglar el datepicker -->
+				<div class="input-field col s12 m4 l4">
+					<input type="text" class="datepicker">
+				</div>
+				<div class="input-field col s12 m6 l6">
+					<label for="stock">Stock</label>
+					<input type="number" name="stock" min="0" value="0">
+				</div>
+				<div class="input-field col s12 m6 l6">
+					<select>
+						<option value="" disabled selected>Seleccione la visibilidad</option>
+						<option value="1">Público</option>
+						<option value="2">Sólo tienda</option>
+					</select>
+					<label>Visibilidad del producto</label>
 				</div>
 				<div class="input-field col s12 m12 l12">
 					<select>
@@ -52,32 +94,7 @@
 					</select>
 					<label>Categoría del producto</label>
 				</div>
-				<div class="row">
-					<div class="input-field col s12 m12 l12">
-						<textarea id="descripcion" class="materialize-textarea"></textarea>
-						<label for="descripcion">Descripción del producto</label>
-					</div>
-				</div>
-				<div class="input-field col s12 m6 l6">
-					<input placeholder="Precio" id="precio" type="text" class="validate">
-					<label for="precio">Precio del producto</label>
-				</div>
-				<div class="input-field col s12 m6 l6">
-					<input placeholder="Precio de oferta" id="precio-oferta" type="text" class="validate">
-					<label for="precio-oferta">Precio de oferta del producto</label>
-				</div>
-				<div class="input-field col s12 m6 l6">
-					<label for="stock">Stock</label>
-					<input type="number" name="stock" min="0" value="0">
-				</div>
-				<div class="input-field col s12 m6 l6">
-					<select>
-						<option value="" disabled selected>Seleccione la visibilidad</option>
-						<option value="1">Público</option>
-						<option value="2">Sólo tienda</option>
-					</select>
-					<label>Visibilidad del producto</label>
-				</div>
+				<!-- TODO Desplegar contenido acorde a la categoría seleccionada -->
 			</div>
 		</form>
 	</div>
