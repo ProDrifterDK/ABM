@@ -1,4 +1,8 @@
-﻿<style>
+﻿@{
+	ViewBag.Title = "Gestor de productos";
+}
+
+<style>
 	.up {
 		margin-top: 15px;
 	}
@@ -26,7 +30,7 @@
 <!-- TODO Remover este botón de prueba cuando llegue el momento -->
 <a class="waves-effect waves-light btn modal-trigger" href="#producto">Modal de edición</a>
 
-<div id="producto" class="modal modal-fixed-footer">
+<div id="producto" class="modal">
 	<div class="modal-content">
 		<h4>Editando producto: {Nombre del Producto}</h4>
 		<form>
@@ -67,7 +71,8 @@
 				</div>
 				<!-- TODO Arreglar el datepicker -->
 				<div class="input-field col s12 m4 l4">
-					<input type="text" class="datepicker">
+					<input type="text" class="datepicker" value="@DateTime.Now.AddMonths(1).ToString("dd-MM-yyyy")" id="fecha-stock">
+					<label class="active" for="fecha-stock">Fecha de stock disponible</label>
 				</div>
 				<div class="input-field col s12 m6 l6">
 					<label for="stock">Stock</label>
@@ -94,7 +99,6 @@
 					</select>
 					<label>Categoría del producto</label>
 				</div>
-				<!-- TODO Desplegar contenido acorde a la categoría seleccionada -->
 			</div>
 		</form>
 	</div>
@@ -109,7 +113,6 @@
 <!-- TODO Script: Agregar visibilidad de los productos-->
 <!-- TODO Script: Agregar categoría del producto -->
 <!-- TODO Script: Agregar código del producto -->
-<!-- TODO Script: Agregar los campos correspondientes al tipo del producto -->
 <script>
     $('#tblResultado').DataTable({
         info: true,

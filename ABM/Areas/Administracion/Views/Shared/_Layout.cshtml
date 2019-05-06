@@ -1,15 +1,18 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>@ViewBag.Title - Administración ABM</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<title>@ViewBag.Title - Administración ABM</title>
+	@Styles.Render("~/Content/css")
+	@Scripts.Render("~/bundles/modernizr")
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/materialize")
+	@RenderSection("scripts", required: false)
 </head>
 <body>
-    <nav id="main-nav-mobile-and-tablet" class="no-shadows amber">
+	<nav id="main-nav-mobile-and-tablet" class="no-shadows amber">
 		<div id="main-navbar" class="nav-wrapper row">
 			<div class="nav-wrapper col s8 m8 l9">
 				<a href="#" data-target="main-menu" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
@@ -30,15 +33,15 @@
 				</div>
 			</div>
 		</div>
-    </nav>
-    <div id="mainAdmin" class="container body-content">
-        <ul class="sidenav" id="main-menu"></ul>
-        @RenderBody()
-    </div>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/materialize")
-    @RenderSection("scripts", required: false)
-    <script>
+	</nav>
+	<div id="mainAdmin" class="container body-content">
+		<ul class="sidenav center" id="main-menu">
+			<li><a href="@Url.Action("Index","HomeAdmin")">Administración</a></li>
+			<li><a href="@Url.Action("AdministradorProductos","HomeAdmin")">Gestor de productos</a></li>
+		</ul>
+		@RenderBody()
+	</div>
+	<script>
 		$(document).ready(function () {
 			$('.sidenav').sidenav();
 			$('.collapsible').collapsible();
@@ -48,7 +51,7 @@
 			$('.datepicker').datepicker();
 			$('.materialboxed').materialbox();
 		});
-    </script>
+	</script>
 </body>
 </html>
 
