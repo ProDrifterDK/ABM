@@ -9,5 +9,6 @@ namespace ABM.Controllers {
 		public ActionResult Sales() => this.View();
 		public ActionResult Product() => this.View();
         public ActionResult Description() => this.View();
+        public ActionResult Support() => this.View();
     }
 }
