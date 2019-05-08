@@ -74,11 +74,15 @@
 					<input type="text" class="datepicker" value="@DateTime.Now.AddMonths(1).ToString("dd-MM-yyyy")" id="fecha-stock">
 					<label class="active" for="fecha-stock">Fecha de stock disponible</label>
 				</div>
-				<div class="input-field col s12 m6 l6">
+				<div class="input-field col s12 m4 l4">
 					<label for="stock">Stock</label>
 					<input type="number" name="stock" min="0" value="0">
 				</div>
-				<div class="input-field col s12 m6 l6">
+				<div class="input-field col s12 m4 l4">
+					<label for="stock-critico">Stock crítico</label>
+					<input type="number" name="stock-critico" min="0" value="0">
+				</div>
+				<div class="input-field col s12 m4 l4">
 					<select>
 						<option value="" disabled selected>Seleccione la visibilidad</option>
 						<option value="1">Público</option>
@@ -112,6 +116,7 @@
 <!-- TODO Script: Agregar tiempo restante para el stock -->
 <!-- TODO Script: Agregar visibilidad de los productos-->
 <!-- TODO Script: Agregar categoría del producto -->
+<!-- TODO Script: Agregar stock crítico -->
 <!-- TODO Script: Agregar código del producto -->
 <script>
     $('#tblResultado').DataTable({
