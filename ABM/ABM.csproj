@@ -229,6 +229,8 @@
     <Content Include="Views\Customer\Pagar.cshtml" />
     <Content Include="Views\Pago\Pagar.cshtml" />
     <Content Include="Views\Pago\Index.cshtml" />
+    <Content Include="Views\Customer\Support.cshtml" />
+    <Content Include="Views\Shared\_LayoutSupport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

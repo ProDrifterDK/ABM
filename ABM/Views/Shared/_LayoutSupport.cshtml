@@ -12,7 +12,7 @@
 	@RenderSection("scripts", required: false)
 </head>
 <body>
-	<nav id="main-nav-mobile-and-tablet" class="no-shadows orange">
+	<nav id="main-nav-mobile-and-tablet" class="no-shadows blue-grey">
 		<div id="main-navbar" class="nav-wrapper row">
 			<div class="nav-wrapper col s2 m2 l2">
 				<a href="#" data-target="main-menu" class="sidenav-trigger show-on-small"><i class="material-icons">menu</i></a>
@@ -20,10 +20,11 @@
 
 			</div>
 			<div class="nav-wrapper col s7 m7 l7">
-				<ul id="nav-mobile" class="left hide-on-med-and-down">
-					<li><a href="@Url.Action("Sales", "Home")">Inicio</a></li>
-					<li><a href="@Url.Action("Description", "Home")">Nuestra tienda</a></li>
-				</ul>
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    <li><a href="@Url.Action("Sales", "Home")">Inicio</a></li>
+                    <li><a href="@Url.Action("Support", "Customer")">Soporte ABM</a></li>
+                    <li><a href="@Url.Action("Description", "Home")">Nuestra tienda</a></li>
+                </ul>
 			</div>
 			<div class="nav-wrapper col s2 m2 l2">
 				<div class="row">
