@@ -1,13 +1,15 @@
-﻿<style>
+﻿@model List<ABM.Datos.SQL.TBL_PRODUCTO>
+
+<style>
     .up {
         margin-top: 15px;
     }
 </style>
-<div class="row" >
-        <div class="">
-            Productos <a id="nuevo" class="right btn btn-small" onclick="Crear();"> Nuevo producto <i class="fa fa-plus"></i></a>
-        </div>
+<div class="row">
+    <div class="">
+        Productos <a id="nuevo" class="right btn" onclick="Crear();"> Nuevo producto <i class="material-icons right">add</i></a>
     </div>
+</div>
 <hr />
 
 <table id="tblResultado" class="table table-striped table-bordered nowrap">
@@ -21,51 +23,24 @@
             <th style="width:30px"></th>
         </tr>
     </thead>
-</table>
-
-<script>
-    $('#tblResultado').DataTable({
-        info: true,
-        sortable: false,
-        responsive: true,
-        ordering: true,
-        lengthMenu: [10, 20, 50, 100],
-        columns: [
-            { data: "Nombre" },
-            { data: "Detalle" },
-            { data: "Precio" },
-            { data: "PrecioOferta" },
-            { data: "Sotock" },
-
-            {
-                sortable: false,
-                "render": function (dat, type, full, meta) {
-
-                    var acciones = "<a href='@Url.Action("EditarProducto")'><i class='material-icons'>edit</i></a>"
-                    return acciones;
-                }
-            },
-        ],
-        sAjaxSource: '@Url.Action("JsonListarTablaProductos")',
-        language: {
-            "sProcessing": "Procesando...",
-            "sLengthMenu": "Mostrar _MENU_ registros",
-            "sZeroRecords": "No se encontraron resultados",
-            "sEmptyTable": "Ningún dato disponible en esta tabla",
-            "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-            "sInfoPostFix": "",
-            "sSearch": "Buscar:",
-            "sUrl": "",
-            "sInfoThousands": ",",
-            "sLoadingRecords": "Cargando...",
-            "oPaginate": {
-                "sFirst": "Primero",
-                "sLast": "Último",
-                "sNext": "Siguiente",
-                "sPrevious": "Anterior"
-            },
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.pro_nombre</td>
+            <td>@item.pro_detalle</td>
+            <td>@item.pro_precio</td>
+            <td>@item.pro_precio_oferta</td>
+            <td>@item.pro_stock</td>
+            <td><a href="@Url.Action("EditarProducto")?id=@item.pro_id"><i class="material-icons">edit</i></a></td>
+        </tr>
         }
-    });
-</script>
+    </tbody>
+</table>
+@section scripts{
+    <script>
+        $('#nuevo').click(function () {
+            location.href="@Url.Action("EditarProducto")?id=0";
+        });
+    </script>
+}

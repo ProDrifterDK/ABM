@@ -1,0 +1,100 @@
+﻿@model ABM.Datos.SQL.TBL_PRODUCTO
+
+<div class="row">
+    <div class="">
+        @if (Model.pro_id == 0)
+        {
+            <text>
+                Crear Producto
+            </text>
+
+        }
+        else
+        {
+
+            <text>
+                Editar Producto
+            </text>
+        }
+    </div>
+</div>
+
+@using (Html.BeginForm("EditarProducto", "HomeAdmin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(o => o.pro_id)
+
+    <div class="">
+        <h4>Producto <a id="nuevo" class="right btn btn-small" onclick="location.href='@Url.Action("AdministradorProductos")'"> Volver </a></h4>
+        <hr />
+
+        <div class="row">
+            <div class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                        @Html.TextBoxFor(o => o.pro_nombre, new { @class = "validate", placeholder = "Nombre" })
+                        <label for="pro_nombre">Nombre</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        @Html.TextBoxFor(o => o.pro_detalle, new { @class = "validate", placeholder = "Detalle" })
+                        <label for="pro_detalle">Detalle</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        @Html.TextBoxFor(o => o.pro_precio, new { @class = "validate", placeholder = "Precio" })
+                        <label for="pro_precio">Precio</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        @Html.TextBoxFor(o => o.pro_stock, new { @class = "validate", placeholder = "Stock" })
+                        <label for="pro_stock">Stock</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        @Html.TextBoxFor(o => o.pro_critico, new { @class = "validate", placeholder = "Stock Crrítico" })
+                        <label for="pro_critico">Stock Crítico</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        @Html.TextBoxFor(o => o.pro_precio_oferta, new { @class = "validate", placeholder = "Precio Oferta" })
+                        <label for="pro_precio_oferta">Precio Oferta</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        @Html.DropDownListFor(o => o.tprod_id, (List<SelectListItem>)ViewBag.TipoProductoSelect, new { @class = "" })
+                        <label for="tprod_id">Tipo de Stock</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        @Html.TextBoxFor(o => o.pro_disponibilidad, new { @class = "validate", placeholder = "Disponibilidad" })
+                        <label for="pro_disponibilidad">Disponibilidad</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button id="buttonGuardar" class="btn">Guardar</button>
+    </div>
+}
+
+@section scripts{
+    <script>
+    $(function () {
+        $('#buttonGuardar').click(function (e) {
+            e.preventDefault();
+            $('form').submit();
+        });
+
+        if ("@ViewBag.Error" == "1" || "@ViewBag.Error" == "0") {
+            M.toast({html: '@Html.Raw(ViewBag.Mensaje)'});
+        }
+    })
+    </script>
+}

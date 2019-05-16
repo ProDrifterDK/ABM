@@ -32,5 +32,27 @@ namespace ABM.Base
             return Json(data);
         }
         public string URLWEBPAY = "";
+
+        protected List<SelectListItem> TipoProductoSelect(int SelectId = 0)
+        {
+            List<SelectListItem> lista = new List<SelectListItem>();
+
+            lista.Add(new SelectListItem
+            {
+                Value = "0",
+                Text = "Seleccione...",
+                Selected = SelectId == 0,
+            });
+
+            var items = BddABM.TBL_TIPO_PRODUCTO.ToList().Select(o => new SelectListItem
+            {
+                Value = o.tprod_id.ToString(),
+                Text = o.tprod_nombre ?? "",
+                Selected = o.tprod_id == SelectId,
+            }).ToList();
+
+            lista.AddRange(items);
+            return lista;
+        }
     }
 }
