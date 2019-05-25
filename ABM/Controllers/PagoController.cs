@@ -158,7 +158,6 @@ namespace ABM.Controllers
 
                         return View(cliente);
                     }
-                    break;
                 case "end":
                     break;
             }
