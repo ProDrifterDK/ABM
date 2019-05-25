@@ -18,7 +18,6 @@ namespace ABM.Datos.SQL
         public TBL_LISTA_COMPRA()
         {
             this.TBL_COMPRA = new HashSet<TBL_COMPRA>();
-            this.NUB_LISTA_PRODUCTOS = new HashSet<NUB_LISTA_PRODUCTOS>();
         }
     
         public int lcom_id { get; set; }
@@ -28,7 +27,5 @@ namespace ABM.Datos.SQL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBL_COMPRA> TBL_COMPRA { get; set; }
         public virtual TBL_USUARIO TBL_USUARIO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NUB_LISTA_PRODUCTOS> NUB_LISTA_PRODUCTOS { get; set; }
     }
 }

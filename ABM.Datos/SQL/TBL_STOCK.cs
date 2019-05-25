@@ -21,8 +21,8 @@ namespace ABM.Datos.SQL
         public int ordn_id { get; set; }
     
         public virtual TBL_ORDEN_STOCK TBL_ORDEN_STOCK { get; set; }
+        public virtual TBL_PRODUCTO TBL_PRODUCTO { get; set; }
         public virtual TBL_RECEPCION TBL_RECEPCION { get; set; }
         public virtual TBL_TIPO_STOCK TBL_TIPO_STOCK { get; set; }
-        public virtual TBL_PRODUCTO TBL_PRODUCTO { get; set; }
     }
 }

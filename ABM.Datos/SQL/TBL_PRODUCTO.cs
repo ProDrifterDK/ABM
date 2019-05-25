@@ -17,8 +17,8 @@ namespace ABM.Datos.SQL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TBL_PRODUCTO()
         {
+            this.NUB_CARRO_PRODUCTOS = new HashSet<NUB_CARRO_PRODUCTOS>();
             this.TBL_STOCK = new HashSet<TBL_STOCK>();
-            this.NUB_LISTA_PRODUCTOS = new HashSet<NUB_LISTA_PRODUCTOS>();
         }
     
         public int pro_id { get; set; }
@@ -32,10 +32,10 @@ namespace ABM.Datos.SQL
         public int pro_disponibilidad { get; set; }
         public string pro_imagen { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NUB_CARRO_PRODUCTOS> NUB_CARRO_PRODUCTOS { get; set; }
         public virtual TBL_TIPO_PRODUCTO TBL_TIPO_PRODUCTO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBL_STOCK> TBL_STOCK { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NUB_LISTA_PRODUCTOS> NUB_LISTA_PRODUCTOS { get; set; }
     }
 }

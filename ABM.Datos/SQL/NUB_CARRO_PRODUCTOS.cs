@@ -12,14 +12,14 @@ namespace ABM.Datos.SQL
     using System;
     using System.Collections.Generic;
     
-    public partial class NUB_LISTA_PRODUCTOS
+    public partial class NUB_CARRO_PRODUCTOS
     {
-        public int lpro_id { get; set; }
+        public int carpord_id { get; set; }
         public int pro_id { get; set; }
-        public int lcom_id { get; set; }
+        public int car_id { get; set; }
         public int pro_monto { get; set; }
     
-        public virtual TBL_LISTA_COMPRA TBL_LISTA_COMPRA { get; set; }
+        public virtual TBL_CARRO_COMPRA TBL_CARRO_COMPRA { get; set; }
         public virtual TBL_PRODUCTO TBL_PRODUCTO { get; set; }
     }
 }

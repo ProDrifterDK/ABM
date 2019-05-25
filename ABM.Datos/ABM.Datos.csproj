@@ -66,7 +66,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="SQL\NUB_LISTA_PRODUCTOS.cs">
+    <Compile Include="SQL\NUB_CARRO_PRODUCTOS.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="SQL\sysdiagram.cs">

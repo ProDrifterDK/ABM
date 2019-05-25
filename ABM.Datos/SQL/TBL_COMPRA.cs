@@ -21,7 +21,7 @@ namespace ABM.Datos.SQL
         public int lcom_id { get; set; }
         public Nullable<System.DateTime> com_fecha_compra { get; set; }
     
-        public virtual TBL_LISTA_COMPRA TBL_LISTA_COMPRA { get; set; }
         public virtual TBL_CARRO_COMPRA TBL_CARRO_COMPRA { get; set; }
+        public virtual TBL_LISTA_COMPRA TBL_LISTA_COMPRA { get; set; }
     }
 }
