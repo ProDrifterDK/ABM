@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ABM.Datos.SQL;
+using System.IO;
 
 namespace ABM.Areas.Administracion.Controllers
 {
@@ -29,6 +30,26 @@ namespace ABM.Areas.Administracion.Controllers
             ViewBag.TipoProductoSelect = TipoProductoSelect();
             ViewBag.Mensaje = "Registro modificado con éxito.";
             ViewBag.Error = 0;
+            HttpPostedFileBase file = null;
+
+            string imagenAntigua = null;
+
+
+            for (int i = 0; i < Request.Files.Count; i++)
+            {
+                if (!Directory.Exists("/ImagenesProductos"))
+                {
+                    Directory.CreateDirectory(/*C:/ArchivosDeLaTula/*/"/ImagenesProductos");
+                }
+
+                file = Request.Files[0];
+
+                file.SaveAs("/ImagenesProductos");
+
+
+                imagenAntigua = modelo.pro_imagen;
+                modelo.pro_imagen = "/ImagenesProductos/" + file.FileName;
+            }
 
             try
             {
@@ -41,6 +62,11 @@ namespace ABM.Areas.Administracion.Controllers
                 }
                 else
                 {
+                    if (!string.IsNullOrEmpty(imagenAntigua))
+                    {
+                        //delete imagenAntigua
+                    }
+
                     BddABM.TBL_PRODUCTO.Attach(modelo);
                     BddABM.Entry(modelo).State = System.Data.Entity.EntityState.Modified;
 
@@ -49,6 +75,11 @@ namespace ABM.Areas.Administracion.Controllers
             }
             catch (Exception ex)
             {
+                if(file != null)
+                {
+                    //delete modelo.pro_imagen;
+                }
+
                 ViewBag.Mensaje = "No se ha podido modificar el registro.";
                 ViewBag.Error = 1;
             }

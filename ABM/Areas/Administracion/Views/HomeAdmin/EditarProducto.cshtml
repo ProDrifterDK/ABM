@@ -19,7 +19,7 @@
     </div>
 </div>
 
-@using (Html.BeginForm("EditarProducto", "HomeAdmin", FormMethod.Post))
+@using (Html.BeginForm("EditarProducto", "HomeAdmin", FormMethod.Post, new { contentType= "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(o => o.pro_id)

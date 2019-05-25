@@ -69,9 +69,6 @@
     <Compile Include="SQL\NUB_CARRO_PRODUCTOS.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="SQL\sysdiagram.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="SQL\TBL_CARRO_COMPRA.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
