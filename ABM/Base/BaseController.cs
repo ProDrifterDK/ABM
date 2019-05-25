@@ -85,8 +85,10 @@ namespace ABM.Base
             var lisProd = new TBL_LISTA_COMPRA
             {
                 lcom_valor = valor,
-                usu_id = Usuario.usu_id == 0 ? BddABM.TBL_USUARIO.FirstOrDefault(o => o.usu_rut == "1-9").usu_id : Usuario.usu_id;
-            }
+                usu_id = Usuario.usu_id == 0 ? BddABM.TBL_USUARIO.FirstOrDefault(o => o.usu_rut == "1-9").usu_id : Usuario.usu_id,
+            };
+
+            return JsonExito();
         }
     }
 }
