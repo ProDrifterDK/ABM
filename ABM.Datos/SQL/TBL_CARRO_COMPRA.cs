@@ -29,8 +29,11 @@ namespace ABM.Datos.SQL
         public string CAR_ORDEN_COMPRA { get; set; }
         public string CAR_SESSION_ID { get; set; }
         public string CAS_ERROR { get; set; }
+        public int USU_ID { get; set; }
+        public System.DateTime cas_creacion { get; set; }
     
         public virtual TBL_ESTADO_CARRO TBL_ESTADO_CARRO { get; set; }
+        public virtual TBL_USUARIO TBL_USUARIO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBL_COMPRA> TBL_COMPRA { get; set; }
     }

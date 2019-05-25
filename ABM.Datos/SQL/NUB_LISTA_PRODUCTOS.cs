@@ -17,6 +17,7 @@ namespace ABM.Datos.SQL
         public int lpro_id { get; set; }
         public int pro_id { get; set; }
         public int lcom_id { get; set; }
+        public int pro_monto { get; set; }
     
         public virtual TBL_LISTA_COMPRA TBL_LISTA_COMPRA { get; set; }
         public virtual TBL_PRODUCTO TBL_PRODUCTO { get; set; }

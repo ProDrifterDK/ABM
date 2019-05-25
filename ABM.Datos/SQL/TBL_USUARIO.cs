@@ -20,6 +20,7 @@ namespace ABM.Datos.SQL
             this.TBL_LISTA_COMPRA = new HashSet<TBL_LISTA_COMPRA>();
             this.TBL_ORDEN_STOCK = new HashSet<TBL_ORDEN_STOCK>();
             this.TBL_RECEPCION = new HashSet<TBL_RECEPCION>();
+            this.TBL_CARRO_COMPRA = new HashSet<TBL_CARRO_COMPRA>();
         }
     
         public int usu_id { get; set; }
@@ -37,5 +38,7 @@ namespace ABM.Datos.SQL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBL_RECEPCION> TBL_RECEPCION { get; set; }
         public virtual TBL_ROL TBL_ROL { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TBL_CARRO_COMPRA> TBL_CARRO_COMPRA { get; set; }
     }
 }

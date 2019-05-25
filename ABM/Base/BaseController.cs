@@ -16,6 +16,7 @@ namespace ABM.Base
         }
 
         protected TBL_USUARIO Usuario { get { return (TBL_USUARIO)Session["Usuario"] ?? new TBL_USUARIO(); } set { Session["Usuario"] = value; } }
+        protected TBL_CARRO_COMPRA Carro { get { return (TBL_CARRO_COMPRA)Session["CarroCompra"] ?? new TBL_CARRO_COMPRA(); } set { Session["CarroCompra"] = value; } }
 
         protected JsonResult JsonExito(string mensaje = "", object data = null)
         {
@@ -53,6 +54,39 @@ namespace ABM.Base
 
             lista.AddRange(items);
             return lista;
+        }
+
+        public JsonResult AgregarAlCarro(int proId)
+        {
+            if(Usuario.usu_id == 0)
+            {
+                Usuario = BddABM.TBL_USUARIO.FirstOrDefault(o => o.usu_rut == "1-9");
+            }
+            if(Carro.CAR_ID == 0)
+            {
+                Carro.USU_ID = Usuario.usu_id;
+                Carro.cas_creacion = DateTime.Now;
+
+                Carro = BddABM.TBL_CARRO_COMPRA.Add(Carro);
+                BddABM.Entry(Carro).State = System.Data.Entity.EntityState.Added;
+
+                BddABM.SaveChanges();
+            }
+
+            var producto = BddABM.TBL_PRODUCTO.FirstOrDefault(o => o.pro_id == proId);
+
+            if (producto == null)
+            {
+                return JsonError("El producto no existe.");
+            }
+
+            var valor = string.IsNullOrEmpty(producto.pro_precio_oferta) ? producto.pro_precio : int.Parse(producto.pro_precio_oferta);
+
+            var lisProd = new TBL_LISTA_COMPRA
+            {
+                lcom_valor = valor,
+                usu_id = Usuario.usu_id == 0 ? BddABM.TBL_USUARIO.FirstOrDefault(o => o.usu_rut == "1-9").usu_id : Usuario.usu_id;
+            }
         }
     }
 }

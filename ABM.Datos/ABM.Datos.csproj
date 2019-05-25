@@ -117,7 +117,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="Backup\ABM.bak" />
+    <None Include="Backup\ABM.dsa" />
     <None Include="packages.config" />
     <None Include="SQL\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>

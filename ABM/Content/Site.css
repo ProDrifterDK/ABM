@@ -113,3 +113,7 @@
 #showcase {
 	padding: 45px 0px 0px 0px;
 }
+
+.text-sombradito{
+    text-shadow:2px 2px #000;
+}

@@ -1,74 +1,53 @@
 ﻿@{
     ViewBag.Title = "Ofertas Destacadas";
+    var ofertas = (List<ABM.Datos.SQL.TBL_PRODUCTO>)ViewBag.Sales;
+    var otros = (List<ABM.Datos.SQL.TBL_PRODUCTO>)ViewBag.Productos;
 }
-<div class="container center">
-    <h3 style="padding-top: 20px">Ofertas destacadas</h3>
-    <div class="slider" id="ofertas-slider">
-        <ul class="slides">
-            <li>
-                <img src="~/Resources/Images/Examples/car.png"> <!-- random image -->
-                <div class="caption center-align">
-                    <h3>This is our big Tagline!</h3>
-                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-                </div>
-            </li>
-            <li>
-                <img src="~/Resources/Images/Examples/moto.png"> <!-- random image -->
-                <div class="caption left-align">
-                    <h3>Left Aligned Caption</h3>
-                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-                </div>
-            </li>
-            <li>
-                <img src="~/Resources/Images/Examples/hammer.png"> <!-- random image -->
-                <div class="caption right-align">
-                    <h3>Right Aligned Caption</h3>
-                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-                </div>
-            </li>
-            <li>
-                <img src="~/Resources/Images/Examples/nail.png"> <!-- random image -->
-                <div class="caption center-align">
-                    <h3>This is our big Tagline!</h3>
-                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-                </div>
-            </li>
-        </ul>
-    </div>
 
-    <h3>Los más vendidos</h3>
-    <div class="slider" id="masvendidos-slider">
-        <ul class="slides">
-            <li>
-                <img src="~/Resources/Images/Examples/drill.png"> <!-- random image -->
-                <div class="caption center-align">
-                    <h3>This is our big Tagline!</h3>
-                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-                </div>
-            </li>
-            <li>
-                <img src="~/Resources/Images/Examples/wheel.png"> <!-- random image -->
-                <div class="caption left-align">
-                    <h3>Left Aligned Caption</h3>
-                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-                </div>
-            </li>
-            <li>
-                <img src="~/Resources/Images/Examples/nail.png"> <!-- random image -->
-                <div class="caption right-align">
-                    <h3>Right Aligned Caption</h3>
-                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-                </div>
-            </li>
-            <li>
-                <img src="~/Resources/Images/Examples/moto.png"> <!-- random image -->
-                <div class="caption center-align">
-                    <h3>This is our big Tagline!</h3>
-                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-                </div>
-            </li>
-        </ul>
-    </div>
+<style>
+    .producto:hover{
+        cursor:pointer;
+    }
+</style>
+
+<div class="container center">
+    @if (ofertas != null && ofertas.Count > 0)
+    {
+        <h3 style="padding-top: 20px">Ofertas destacadas</h3>
+        <div class="slider" id="ofertas-slider">
+            <ul class="slides">
+                @foreach (var item in ofertas)
+                {
+                    <li>
+                        <img src="~/Resources/Images/Examples/car.png" id="@item.pro_id" class="producto"> <!-- random image -->
+                        <div class="caption center-align text-sombradito producto" id="@item.pro_id">
+                            <h3 class="producto" id="@item.pro_id">@item.pro_nombre</h3>
+                            <h5 class="light grey-text text-lighten-3 producto" id="@item.pro_id">@item.pro_detalle</h5>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+
+    @if (otros != null && otros.Count > 0)
+    {
+        <h3>Los más vendidos</h3>
+        <div class="slider" id="masvendidos-slider">
+            <ul class="slides">
+                @foreach (var item in otros)
+                {
+                    <li>
+                        <img src="~/Resources/Images/Examples/car.png" id="@item.pro_id" class="producto"> <!-- random image -->
+                        <div class="caption center-align text-sombradito producto" id="@item.pro_id">
+                            <h3>@item.pro_nombre</h3>
+                            <h5 class="light grey-text text-lighten-3">@item.pro_detalle</h5>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    }
 
 </div>
 @section scripts {
@@ -80,6 +59,10 @@
                 interval: 8000
             });
             $("#masvendidos-slider").slider();
+            $('.producto').click(function (e) {
+                var id = $(this).attr('id');
+                location.href = "@Url.Action("Product")?proId=" + id;
+            });
         });
     </script>
 }
