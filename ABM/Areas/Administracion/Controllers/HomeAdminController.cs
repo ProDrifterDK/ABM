@@ -63,7 +63,8 @@ namespace ABM.Areas.Administracion.Controllers
                 {
                     if (!string.IsNullOrEmpty(imagenAntigua))
                     {
-                        System.IO.File.Delete(imagenAntigua);
+                        System.IO.File.SetAttributes(Server.MapPath(imagenAntigua), FileAttributes.Normal);
+                        System.IO.File.Delete(Server.MapPath(imagenAntigua));
                     }
 
                     BddABM.TBL_PRODUCTO.Attach(modelo);
@@ -76,7 +77,8 @@ namespace ABM.Areas.Administracion.Controllers
             {
                 if(file != null)
                 {
-                    //delete modelo.pro_imagen;
+                    System.IO.File.SetAttributes(Server.MapPath(imagenAntigua), FileAttributes.Normal);
+                    System.IO.File.Delete(Server.MapPath(imagenAntigua));
                 }
 
                 ViewBag.Mensaje = "No se ha podido modificar el registro.";

@@ -23,6 +23,7 @@
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(o => o.pro_id)
+    @Html.HiddenFor(o=> o.pro_imagen)
 
     <div class="">
         <h4>Producto <a id="nuevo" class="right btn btn-small" onclick="location.href='@Url.Action("AdministradorProductos")'"> Volver </a></h4>
