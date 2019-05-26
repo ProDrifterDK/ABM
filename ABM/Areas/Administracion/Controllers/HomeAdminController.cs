@@ -37,14 +37,13 @@ namespace ABM.Areas.Administracion.Controllers
 
             for (int i = 0; i < Request.Files.Count; i++)
             {
-                if (!Directory.Exists("/ImagenesProductos"))
+                if (!Directory.Exists("~/ImagenesProductos"))
                 {
-                    Directory.CreateDirectory(/*C:/ArchivosDeLaTula/*/"/ImagenesProductos");
+                    Directory.CreateDirectory(Server.MapPath("~/ImagenesProductos"));
                 }
 
                 file = Request.Files[0];
-
-                file.SaveAs("/ImagenesProductos");
+                file.SaveAs(Path.Combine(Server.MapPath("~/ImagenesProductos"), file.FileName));
 
 
                 imagenAntigua = modelo.pro_imagen;
@@ -64,7 +63,7 @@ namespace ABM.Areas.Administracion.Controllers
                 {
                     if (!string.IsNullOrEmpty(imagenAntigua))
                     {
-                        //delete imagenAntigua
+                        System.IO.File.Delete(imagenAntigua);
                     }
 
                     BddABM.TBL_PRODUCTO.Attach(modelo);
