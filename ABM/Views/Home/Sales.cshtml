@@ -14,12 +14,12 @@
     @if (ofertas != null && ofertas.Count > 0)
     {
         <h3 style="padding-top: 20px">Ofertas destacadas</h3>
-        <div class="slider" id="ofertas-slider">
-            <ul class="slides">
+        <div class="slider" id="ofertas-slider" style="background-size:100% auto;background-repeat: no-repeat;">
+            <ul class="slides" style="background-size:100% auto;background-repeat: no-repeat;">
                 @foreach (var item in ofertas)
                 {
-                    <li>
-                        <img src="~/Resources/Images/Examples/car.png" id="@item.pro_id" class="producto"> <!-- random image -->
+                    <li style="background-size:100% auto;background-repeat: no-repeat;">
+                        <img src="@item.pro_imagen" id="@item.pro_id" class="producto" style="max-width : 100%; "> <!-- random image -->
                         <div class="caption center-align text-sombradito producto" id="@item.pro_id">
                             <h3 class="producto" id="@item.pro_id">@item.pro_nombre</h3>
                             <h5 class="light grey-text text-lighten-3 producto" id="@item.pro_id">@item.pro_detalle</h5>
@@ -38,7 +38,7 @@
                 @foreach (var item in otros)
                 {
                     <li>
-                        <img src="~/Resources/Images/Examples/car.png" id="@item.pro_id" class="producto"> <!-- random image -->
+                        <img src="@item.pro_imagen" id="@item.pro_id" class="producto"> <!-- random image -->
                         <div class="caption center-align text-sombradito producto" id="@item.pro_id">
                             <h3>@item.pro_nombre</h3>
                             <h5 class="light grey-text text-lighten-3">@item.pro_detalle</h5>
@@ -58,7 +58,7 @@
             $("#ofertas-slider").slider({
                 interval: 8000
             });
-            $("#masvendidos-slider").slider();
+            $("#masvendidos-slider").slider({});
             $('.producto').click(function (e) {
                 var id = $(this).attr('id');
                 location.href = "@Url.Action("Product")?proId=" + id;
