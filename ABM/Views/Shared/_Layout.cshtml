@@ -177,8 +177,24 @@
 			$('.sidenav').sidenav();
 			$(".dropdown-trigger").dropdown();
 			$('.modal').modal();
-			$('.collapsible').collapsible();
-		});
+            $('.collapsible').collapsible();
+        });
+
+        function CrearAjax(success, data, url) {
+            $.ajax({
+                data: data,
+                url: url,
+                type:'post',
+                success:success,
+            });
+        }
+
+        function AgregarAlCarro(proId, cantidad) { 
+            CrearAjax(function (data) {
+                //Success Function
+                M.toast({html: data.mensaje });
+            }, { proId: proId, cantidad: cantidad }, '@Url.Action("AgregarAlCarro")')
+        }
 	</script>
 </body>
 </html>

@@ -5,8 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ABM.Datos.SQL;
-using Webpay.Transbank.Library;
-using Webpay.Transbank.Library.Wsdl.Normal;
+using Transbank.Webpay;
 
 namespace ABM.Controllers
 {
@@ -19,12 +18,9 @@ namespace ABM.Controllers
             TBL_USUARIO cliente = Usuario;
 
             //WebPay
-            Configuration configuration = new Configuration();
-            configuration.Environment = certificate["environment"];
-            configuration.CommerceCode = certificate["commerce_code"];
-            configuration.PublicCert = certificate["public_cert"];
-            configuration.WebpayCert = certificate["webpay_cert"];
-            configuration.Password = certificate["password"];
+
+            var transaction =
+                new Transbank.Webpay.Webpay(Configuration.ForTestingWebpayPlusNormal()).NormalTransaction;
 
             /** Crea Dictionary con descripción */
             Dictionary<string, string> description = new Dictionary<string, string>();
@@ -37,9 +33,6 @@ namespace ABM.Controllers
             description.Add("NC", "N cuotas sin inter&eacute;s");
 
             /** Creacion Objeto Webpay */
-            Webpay.Transbank.Library.Webpay webpay = new Webpay.Transbank.Library.Webpay(configuration);
-
-            /** Crea Dictionary con codigos de resultado */
             Dictionary<string, string> codes = new Dictionary<string, string>();
 
             codes.Add("0", "Transacción aprobada");
@@ -52,7 +45,7 @@ namespace ABM.Controllers
             codes.Add("-7", "Excede límite diario por transacción");
             codes.Add("-8", "Rubro no autorizado");
 
-            if (string.IsNullOrEmpty(aaction))
+            if (aaction == "Pagar")
                 aaction = "result";
 
             switch (aaction)
@@ -67,7 +60,7 @@ namespace ABM.Controllers
                     token = Request.Form["token_ws"];
                     request.Add("token", token.ToString());
 
-                    transactionResultOutput result = webpay.getNormalTransaction().getTransactionResult(token);
+                    var result = transaction.getTransactionResult(token);
 
                     var carro = BddABM.TBL_CARRO_COMPRA.FirstOrDefault(o => o.CAR_TOKEN == token);
 
@@ -175,44 +168,16 @@ namespace ABM.Controllers
 
         /** Crea Dictionary con datos de entrada */
         private Dictionary<string, string> request = new Dictionary<string, string>();
-        public JsonResult GetToken(int compra, string rut)
+        public JsonResult GetToken(string rut)
         {
             int deudaTotal = 0;
 
-            var carro = new TBL_CARRO_COMPRA
-            {
-                CEST_ESTADO = 1,
-            };
+            var carro = Carro;
 
-            BddABM.TBL_CARRO_COMPRA.Add(carro);
-            BddABM.Entry(carro).State = System.Data.Entity.EntityState.Added;
+            deudaTotal = carro.CAR_MONTO ?? 0;
 
-            BddABM.SaveChanges();
-
-            var comp = BddABM.TBL_COMPRA.FirstOrDefault(o => o.com_id == compra);
-            comp.car_id = carro.CAR_ID;
-
-            BddABM.TBL_COMPRA.Attach(comp);
-            BddABM.Entry(comp).State = System.Data.Entity.EntityState.Modified;
-
-            deudaTotal += comp.com_valor;
-
-            carro.CAR_MONTO = deudaTotal;
-
-            BddABM.TBL_CARRO_COMPRA.Attach(carro);
-            BddABM.Entry(carro).State = System.Data.Entity.EntityState.Modified;
-
-            BddABM.SaveChanges();
-
-            Configuration configuration = new Configuration();
-            configuration.Environment = certificate["environment"];
-            configuration.CommerceCode = certificate["commerce_code"];
-            configuration.PublicCert = certificate["public_cert"];
-            configuration.WebpayCert = certificate["webpay_cert"];
-            configuration.Password = certificate["password"];
-
-            /** Creacion Objeto Webpay */
-            Webpay.Transbank.Library.Webpay webpay = new Webpay.Transbank.Library.Webpay(configuration);
+            var transaction =
+                new Transbank.Webpay.Webpay(Configuration.ForTestingWebpayPlusNormal()).NormalTransaction;
 
             /** Información de Host para crear URL */
             String httpHost = System.Web.HttpContext.Current.Request.ServerVariables["HTTP_HOST"].ToString();
@@ -245,10 +210,10 @@ namespace ABM.Controllers
             string sessionId = Session.SessionID;
 
             /** URL Final */
-            string urlReturn = "http://" + httpHost + "/Session/Deudas" + "?rut=" + rut + "&aaction=result";
+            string urlReturn = "http://" + httpHost + "/Pago/Pagar" + "?aaction=result";
 
             /** URL Final */
-            string urlFinal = "http://" + httpHost + "/Session/Deudas" + "?rut=" + rut + "&aaction=end";
+            string urlFinal = "http://" + httpHost + "/Pago/Pagar" + "?aaction=end";
 
             request.Add("amount", amount.ToString());
             request.Add("buyOrder", buyOrder.ToString());
@@ -257,7 +222,8 @@ namespace ABM.Controllers
             request.Add("urlFinal", urlFinal.ToString());
 
             /** Ejecutamos metodo initTransaction desde Libreria */
-            wsInitTransactionOutput result = webpay.getNormalTransaction().initTransaction(amount, buyOrder, sessionId, urlReturn, urlFinal);
+
+            var result = transaction.initTransaction(amount, buyOrder, sessionId, urlReturn, urlFinal);
 
             carro.CAR_TOKEN = result.token;
             carro.CAR_ORDEN_COMPRA = buyOrder;

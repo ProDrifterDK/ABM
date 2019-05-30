@@ -56,39 +56,70 @@ namespace ABM.Base
             return lista;
         }
 
-        public JsonResult AgregarAlCarro(int proId)
+        public JsonResult AgregarAlCarro(int proId, int cantidad)
         {
-            if(Usuario.usu_id == 0)
+            try
             {
-                Usuario = BddABM.TBL_USUARIO.FirstOrDefault(o => o.usu_rut == "1-9");
-            }
-            if(Carro.CAR_ID == 0)
-            {
-                Carro.USU_ID = Usuario.usu_id;
-                Carro.cas_creacion = DateTime.Now;
 
-                Carro = BddABM.TBL_CARRO_COMPRA.Add(Carro);
-                BddABM.Entry(Carro).State = System.Data.Entity.EntityState.Added;
+                if (Usuario.usu_id == 0)
+                {
+                    Usuario = BddABM.TBL_USUARIO.FirstOrDefault(o => o.usu_rut == "1-9");
+                }
+                if (Carro.CAR_ID == 0)
+                {
+                    var carro = new TBL_CARRO_COMPRA
+                    {
+                        USU_ID = Usuario.usu_id,
+                        cas_creacion = DateTime.Now,
+                        CEST_ESTADO = 1,
+                    };
+
+                    Carro = BddABM.TBL_CARRO_COMPRA.Add(carro);
+                    BddABM.Entry(carro).State = System.Data.Entity.EntityState.Added;
+
+                    BddABM.SaveChanges();
+                }
+
+                var producto = BddABM.TBL_PRODUCTO.FirstOrDefault(o => o.pro_id == proId);
+
+                if (producto == null)
+                {
+                    return JsonError("El producto no existe.");
+                }
+
+                var valor = string.IsNullOrEmpty(producto.pro_precio_oferta) ? producto.pro_precio : int.Parse(producto.pro_precio_oferta);
+
+                var carroProd = new NUB_CARRO_PRODUCTOS
+                {
+                    pro_monto = valor,
+                    pro_id = proId,
+                    car_id = Carro.CAR_ID,
+                    carpord_cantidad = cantidad,
+                };
+
+                BddABM.NUB_CARRO_PRODUCTOS.Add(carroProd);
+                BddABM.Entry(carroProd).State = System.Data.Entity.EntityState.Added;
 
                 BddABM.SaveChanges();
+
+                var carroCompra = BddABM.TBL_CARRO_COMPRA.FirstOrDefault(o => o.CAR_ID == Carro.CAR_ID);
+
+                carroCompra.CAR_MONTO = (carroCompra.CAR_MONTO ?? 0) + (carroProd.pro_monto * carroProd.carpord_cantidad);
+
+                BddABM.TBL_CARRO_COMPRA.Attach(carroCompra);
+                BddABM.Entry(carroCompra).State = System.Data.Entity.EntityState.Modified;
+
+                BddABM.SaveChanges();
+
+                Carro = carroCompra;
+
+               return JsonExito("Producto agregado al carro.");
+            }
+            catch (Exception ex)
+            {
+                return JsonError("No se ha podido agregar al carro");
             }
 
-            var producto = BddABM.TBL_PRODUCTO.FirstOrDefault(o => o.pro_id == proId);
-
-            if (producto == null)
-            {
-                return JsonError("El producto no existe.");
-            }
-
-            var valor = string.IsNullOrEmpty(producto.pro_precio_oferta) ? producto.pro_precio : int.Parse(producto.pro_precio_oferta);
-
-            var lisProd = new TBL_LISTA_COMPRA
-            {
-                lcom_valor = valor,
-                usu_id = Usuario.usu_id == 0 ? BddABM.TBL_USUARIO.FirstOrDefault(o => o.usu_rut == "1-9").usu_id : Usuario.usu_id,
-            };
-
-            return JsonExito();
         }
     }
 }

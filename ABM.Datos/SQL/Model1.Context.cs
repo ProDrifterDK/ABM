@@ -25,7 +25,6 @@ namespace ABM.Datos.SQL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<NUB_CARRO_PRODUCTOS> NUB_CARRO_PRODUCTOS { get; set; }
         public virtual DbSet<TBL_CARRO_COMPRA> TBL_CARRO_COMPRA { get; set; }
         public virtual DbSet<TBL_COMPRA> TBL_COMPRA { get; set; }
         public virtual DbSet<TBL_ESTADO_CARRO> TBL_ESTADO_CARRO { get; set; }
@@ -38,5 +37,7 @@ namespace ABM.Datos.SQL
         public virtual DbSet<TBL_TIPO_PRODUCTO> TBL_TIPO_PRODUCTO { get; set; }
         public virtual DbSet<TBL_TIPO_STOCK> TBL_TIPO_STOCK { get; set; }
         public virtual DbSet<TBL_USUARIO> TBL_USUARIO { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<NUB_CARRO_PRODUCTOS> NUB_CARRO_PRODUCTOS { get; set; }
     }
 }

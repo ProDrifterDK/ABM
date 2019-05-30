@@ -19,10 +19,11 @@
     <input id="token" type="hidden" name="token_ws" value="@ViewBag.Token" />
 </form>
 
-<script>
+<button onclick="Pagar()">PAGA LA WA OH</button>
+@section scripts{
+    <script>
 
     $(document).ready(function () {
-        CargarGrilla();
         if ('@ViewBag.Mensaje' != '') {
             MostrarMensaje('@ViewBag.Mensaje', '@ViewBag.Error');
         }
@@ -63,7 +64,7 @@
         $.ajax({
             type: 'post',
             url: '@Url.Action("GetToken")',
-            data: { Deudas: checked, rut: '@Model.usu_rut' },
+            data: { rut: '@Model.usu_rut' },
             success: function (data) {
                 if (data.exito) {
                     $('#token').val(data.data.result.token);
@@ -77,4 +78,5 @@
             },
         })
     }
-</script>
+    </script>
+}

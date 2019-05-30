@@ -17,8 +17,8 @@ namespace ABM.Datos.SQL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TBL_CARRO_COMPRA()
         {
-            this.NUB_CARRO_PRODUCTOS = new HashSet<NUB_CARRO_PRODUCTOS>();
             this.TBL_COMPRA = new HashSet<TBL_COMPRA>();
+            this.NUB_CARRO_PRODUCTOS = new HashSet<NUB_CARRO_PRODUCTOS>();
         }
     
         public int CAR_ID { get; set; }
@@ -33,11 +33,11 @@ namespace ABM.Datos.SQL
         public int USU_ID { get; set; }
         public System.DateTime cas_creacion { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NUB_CARRO_PRODUCTOS> NUB_CARRO_PRODUCTOS { get; set; }
         public virtual TBL_ESTADO_CARRO TBL_ESTADO_CARRO { get; set; }
         public virtual TBL_USUARIO TBL_USUARIO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBL_COMPRA> TBL_COMPRA { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NUB_CARRO_PRODUCTOS> NUB_CARRO_PRODUCTOS { get; set; }
     }
 }

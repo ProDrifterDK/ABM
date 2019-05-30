@@ -56,7 +56,7 @@
                                 <input id="cantidad" type="number" name="cantidadDeCompra" min="1" value="1" max="@(Model.pro_stock - Model.pro_critico)">
                             </div>
                             <div class="input-field col s12 m12 l6">
-                                <button class="waves-effect waves-light btn"><i class="material-icons left">add_shopping_cart</i>Agregar al carrito</button>
+                                <button type="button" class="waves-effect waves-light btn" id="agregar"><i class="material-icons left">add_shopping_cart</i>Agregar al carrito</button>
                             </div>
                         } else if (Model.pro_stock < Model.pro_critico && Model.pro_stock > 0){
                             <p>
@@ -105,8 +105,21 @@
 
 @section scripts{
     <script>
-        $('#cantidad').change(function (e) {
+        $(document).ready(function () {
+            $('#cantidad').change(function (e) {
+                var val = $(this).val();
 
+                if (val > @(Model.pro_stock - Model.pro_critico)) {
+                    e.preventDefault();
+                    M.toast({ html: 'El valor excede el máximo' });
+                }
+            });
+
+            $('#agregar').click(function (e) {
+                e.preventDefault();
+                var cantidad = $('#cantidad').val();
+                AgregarAlCarro(@Model.pro_id, cantidad);
+            });
         });
     </script>
 }
