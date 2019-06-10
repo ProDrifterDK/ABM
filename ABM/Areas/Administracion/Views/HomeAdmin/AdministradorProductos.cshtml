@@ -11,7 +11,7 @@
 </style>
 <div class="row">
     <div class="">
-        Productos <a id="nuevo" class="right btn" onclick="Crear();"> Nuevo producto <i class="material-icons right">add</i></a>
+        Productos <a id="nuevo" class="right btn" onclick=""> Nuevo producto <i class="material-icons right">add</i></a>
     </div>
 </div>
 <hr />
@@ -43,8 +43,10 @@
 </table>
 @section scripts{
     <script>
+    $(document).ready(function () {
         $('#nuevo').click(function () {
             location.href="@Url.Action("EditarProducto")?id=0";
         });
+    })
     </script>
 }
