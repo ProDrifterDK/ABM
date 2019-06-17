@@ -172,7 +172,7 @@ namespace ABM.Controllers
         {
             int deudaTotal = 0;
 
-            var carro = Carro;
+            var carro = BddABM.TBL_CARRO_COMPRA.FirstOrDefault(o=>o.CAR_ID == Carro.CAR_ID);
 
             deudaTotal = carro.CAR_MONTO ?? 0;
 
