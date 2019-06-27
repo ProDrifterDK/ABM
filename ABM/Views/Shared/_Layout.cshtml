@@ -51,7 +51,7 @@
 						<a href="@Url.Action("ShoppingCart", "Customer")"><i class="material-icons">shopping_cart</i></a>
 					</div>
 					<div class="col s6 m6 left-align">
-						<text id="shopping-cart-quantity">(0)</text>
+						<text id="shopping-cart-quantity">(<label style="color:inherit; font-size:inherit" id="cantProductos">0</label>)</text>
 					</div>
 				</div>
 			</div>
@@ -178,6 +178,7 @@
 			$(".dropdown-trigger").dropdown();
 			$('.modal').modal();
             $('.collapsible').collapsible();
+            GetCantidadProductos();
         });
 
         function CrearAjax(success, data, url) {
@@ -189,10 +190,22 @@
             });
         }
 
+        function GetCantidadProductos() {
+            $.ajax({
+                type: 'post',
+                url: '@Url.Action("GetProdsCant")',
+                data: {},
+                success: function (cantidad) {
+                    $('#cantProductos').html(cantidad);
+                }
+            });
+        }
+
         function AgregarAlCarro(proId, cantidad) { 
             CrearAjax(function (data) {
                 //Success Function
                 M.toast({html: data.mensaje });
+                GetCantidadProductos();
             }, { proId: proId, cantidad: cantidad }, '@Url.Action("AgregarAlCarro")')
         }
 	</script>

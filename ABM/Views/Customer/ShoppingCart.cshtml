@@ -67,7 +67,7 @@
                     <label for="quantity"></label>
                 </div>
                 <div class="col l2 center" id="Total">
-                    <p>@(item.pro_monto*item.carpord_cantidad)</p>
+                    <p>@(item.pro_monto * item.carpord_cantidad)</p>
                 </div>
                 <div class="col l2 center" id="Actions">
                     <a class="btn tooltipped red" id="quitar" data-position="right" data-tooltip="Quitar"><i class="material-icons prefix">remove_circle_outline</i></a>
@@ -83,8 +83,43 @@
         <img class="responsive-img" src="~/Resources/Images/webpay.png" width="256" />
     </div>
     <div class="col l2 offset-l4">
-        <button class="btn btn-large waves-effect"> Pagar</button>
+        <button id="pagar" class="btn btn-large waves-effect"> Pagar</button>
     </div>
 </div>
 
+<form id="formWebPay" method="post" action="@ViewBag.Url">
+    <input id="token" type="hidden" name="token_ws" value="@ViewBag.Token" />
+</form>
 
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#pagar').click(function () {
+                Pagar();
+            });
+        });
+
+        function Pagar() {
+            $.ajax({
+                type: 'post',
+                url: '@Url.Action("GetToken", "Pago")',
+                data: {},
+                success: function (data) {
+                    if (data.exito) {
+                        $('#token').val(data.data.result.token);
+                        $('#formWebPay').attr('action', data.data.result.url);
+                        $('#formWebPay').submit();
+                    } else {
+                        if (data.mensaje) {
+                            M.toast(
+                                {
+                                    html: data.mensaje,
+                                }
+                            );
+                        }
+                    }
+                },
+            })
+        }
+    </script>
+}
