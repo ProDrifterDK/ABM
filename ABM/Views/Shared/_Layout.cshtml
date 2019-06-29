@@ -67,147 +67,146 @@
 			</div>
 		</div>
 	</nav>
-	<div id="main" class="container body-content">
-		<ul class="sidenav" id="main-menu"></ul>
-		<div id="modal-search" class="modal">
-			<div class="modal-content">
-				<!-- Desktop-->
-				<div class="row hide-on-med-and-down center">
-					<div class="col s2">
-						<div class="chip">
-							<a href="#" style="text-decoration:none;">Herramientas</a>
+	<div id="wrapper">
+		<div class="container body-content">
+			<ul class="sidenav" id="main-menu"></ul>
+			<div id="modal-search" class="modal">
+				<div class="modal-content">
+					<!-- Desktop -->
+					<div class="row hide-on-med-and-down center">
+						<div class="col s2">
+							<div class="chip">
+								<a href="#" style="text-decoration:none;">Herramientas</a>
+							</div>
+						</div>
+						<div class="col s2">
+							<div class="chip">
+								<a href="#" style="text-decoration:none;">Neumáticos</a>
+							</div>
+						</div>
+						<div class="col s2">
+							<div class="chip">
+								<a href="#" style="text-decoration:none;">Llantas</a>
+							</div>
+						</div>
+						<div class="col s2">
+							<div class="chip">
+								<a href="#" style="text-decoration:none;">Llaves</a>
+							</div>
+						</div>
+						<div class="col s2">
+							<div class="chip">
+								<a href="#" style="text-decoration:none;">Martillos</a>
+							</div>
+						</div>
+						<div class="col s2">
+							<div class="chip">
+								<a href="#" style="text-decoration:none;">Luces</a>
+							</div>
 						</div>
 					</div>
-					<div class="col s2">
-						<div class="chip">
-							<a href="#" style="text-decoration:none;">Neumáticos</a>
-						</div>
+					<!-- Mobile -->
+					<div class="row hide-on-large-only">
+						<a class="dropdown-trigger" href="#!" data-target="dropdown2">Categorias<i class="material-icons right">arrow_drop_down</i></a>
 					</div>
-					<div class="col s2">
-						<div class="chip">
-							<a href="#" style="text-decoration:none;">Llantas</a>
-						</div>
-					</div>
-					<div class="col s2">
-						<div class="chip">
-							<a href="#" style="text-decoration:none;">Llaves</a>
-						</div>
-					</div>
-					<div class="col s2">
-						<div class="chip">
-							<a href="#" style="text-decoration:none;">Martillos</a>
-						</div>
-					</div>
-					<div class="col s2">
-						<div class="chip">
-							<a href="#" style="text-decoration:none;">Luces</a>
-						</div>
-					</div>
-				</div>
-				<!--Mobile-->
-				<div class="row hide-on-large-only">
-					<a class="dropdown-trigger" href="#!" data-target="dropdown2">Categorias<i class="material-icons right">arrow_drop_down</i></a>
-				</div>
-				<h5 class="center">Ingrese su búsqueda</h5>
-				<div class="row">
-					<form class="col s12 m12 l12">
-						<div class="row">
-							<div class="input-field col s12 m12 l12">
-								<div class="row">
-									<div class="col s1 m1 l1 center-align">
-										<label class="label-icon prefix" for="search"><i class="material-icons">search</i></label>
-									</div>
-									<div class="col s11 m11 l11">
-										<input id="search" type="search" required>
+					<h5 class="center">Ingrese su búsqueda</h5>
+					<div class="row">
+						<form class="col s12 m12 l12">
+							<div class="row">
+								<div class="input-field col s12 m12 l12">
+									<div class="row">
+										<div class="col s1 m1 l1 center-align">
+											<label class="label-icon prefix" for="search"><i class="material-icons">search</i></label>
+										</div>
+										<div class="col s11 m11 l11">
+											<input id="search" type="search" required>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-		@RenderBody()
-		<div class="fixed-action-btn click-to-toggle">
-			<a href="#modal-search" id="floating-button" class="waves-effect waves-light modal-trigger btn-floating btn-large red pulse">
-				<i class="large material-icons">search</i>
-			</a>
-		</div>
-	</div>
-	<footer class="page-footer blue-grey darken-4">
-		<div class="container">
-			<div class="row">
-				<div class="col l6 s12">
-					<h5 class="white-text">Contáctenos</h5>
-					<div class="row">
-						<div class="col">
-							<i class="material-icons">local_phone</i>
-						</div>
-						<div class="col">
-							<text class="grey-text text-lighten-4">+56912345678</text>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col">
-							<i class="material-icons">mail</i>
-						</div>
-						<div class="col">
-							<a class="grey-text text-lighten-4">abm@abm.cl</a>
-						</div>
+						</form>
 					</div>
 				</div>
-				<div class="col l4 offset-l2 s12 right-align">
-					<h5 class="white-text">Síguenos</h5>
-					<ul style="margin-right:30px">
-						<li>
-							<a href="https://www.facebook.com"><img src='@Url.Content("~/Resources/Images/facebook.svg")' width="32" /></a>
-						</li>
-					</ul>
+			</div>
+			@RenderBody()
+			<div class="fixed-action-btn click-to-toggle">
+				<a href="#modal-search" id="floating-button" class="waves-effect waves-light modal-trigger btn-floating btn-large red pulse">
+					<i class="large material-icons">search</i>
+				</a>
+			</div>
+		</div>
+		<footer class="page-footer blue-grey darken-4">
+			<div class="container">
+				<div class="row">
+					<div class="col l6 s12">
+						<h5 class="white-text">Contáctenos</h5>
+						<div class="row">
+							<div class="col">
+								<i class="material-icons">local_phone</i>
+							</div>
+							<div class="col">
+								<text class="grey-text text-lighten-4">+56912345678</text>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<i class="material-icons">mail</i>
+							</div>
+							<div class="col">
+								<a class="grey-text text-lighten-4">abm@abm.cl</a>
+							</div>
+						</div>
+					</div>
+					<div class="col l4 offset-l2 s12 right-align">
+						<h5 class="white-text">Síguenos</h5>
+						<ul style="margin-right:30px">
+							<li>
+								<a href="https://www.facebook.com"><img src='@Url.Content("~/Resources/Images/facebook.svg")' width="32" /></a>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="footer-copyright">
-			<div class="container center">
-				Hecho por el equipo de Resyst Softwares
+			<div class="footer-copyright">
+				<div class="container center">
+					Hecho por el equipo de Resyst Softwares
+				</div>
 			</div>
+		</footer>
 		</div>
-	</footer>
 	<script>
 		$(document).ready(function () {
 			$('.sidenav').sidenav();
 			$(".dropdown-trigger").dropdown();
 			$('.modal').modal();
-            $('.collapsible').collapsible();
-            GetCantidadProductos();
-        });
-
-        function CrearAjax(success, data, url) {
-            $.ajax({
-                data: data,
-                url: url,
-                type:'post',
-                success:success,
-            });
-        }
-
-        function GetCantidadProductos() {
-            $.ajax({
-                type: 'post',
-                url: '@Url.Action("GetProdsCant")',
-                data: {},
-                success: function (cantidad) {
-                    $('#cantProductos').html(cantidad);
-                }
-            });
-        }
-
-        function AgregarAlCarro(proId, cantidad) { 
-            CrearAjax(function (data) {
-                //Success Function
-                M.toast({html: data.mensaje });
-                GetCantidadProductos();
-            }, { proId: proId, cantidad: cantidad }, '@Url.Action("AgregarAlCarro")')
-        }
+			$('.collapsible').collapsible();
+			GetCantidadProductos();
+		});
+		function CrearAjax(success, data, url) {
+			$.ajax({
+				data: data,
+				url: url,
+				type:'post',
+				success:success,
+			});
+		}
+		function GetCantidadProductos() {
+			$.ajax({
+				type: 'post',
+				url: '@Url.Action("GetProdsCant")',
+				data: {},
+				success: function (cantidad) {
+					$('#cantProductos').html(cantidad);
+				}
+			});
+		}
+		function AgregarAlCarro(proId, cantidad) {
+			CrearAjax(function (data) {
+				//Success Function
+				M.toast({html: data.mensaje });
+				GetCantidadProductos();
+			}, { proId: proId, cantidad: cantidad }, '@Url.Action("AgregarAlCarro")')
+		}
 	</script>
 </body>
 </html>
