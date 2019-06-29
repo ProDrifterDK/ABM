@@ -168,13 +168,18 @@ namespace ABM.Controllers
 
         /** Crea Dictionary con datos de entrada */
         private Dictionary<string, string> request = new Dictionary<string, string>();
-        public JsonResult GetToken(string rut)
+        public JsonResult GetToken()
         {
             int deudaTotal = 0;
 
-            var carro = Carro;
+            var carro = BddABM.TBL_CARRO_COMPRA.FirstOrDefault(o=>o.CAR_ID == Carro.CAR_ID);
 
-            deudaTotal = carro.CAR_MONTO ?? 0;
+            deudaTotal = carro?.CAR_MONTO ?? 0;
+
+            if(carro?.NUB_CARRO_PRODUCTOS == null || carro.NUB_CARRO_PRODUCTOS.Count <= 0)
+            {
+                return JsonError("No hay productos en el carro");
+            }
 
             var transaction =
                 new Transbank.Webpay.Webpay(Configuration.ForTestingWebpayPlusNormal()).NormalTransaction;
@@ -210,10 +215,10 @@ namespace ABM.Controllers
             string sessionId = Session.SessionID;
 
             /** URL Final */
-            string urlReturn = "http://" + httpHost + "/Pago/Pagar" + "?aaction=result";
+            string urlReturn = "http://" + httpHost + "/Customer/ShoppingCart" + "?aaction=result";
 
             /** URL Final */
-            string urlFinal = "http://" + httpHost + "/Pago/Pagar" + "?aaction=end";
+            string urlFinal = "http://" + httpHost + "/Customer/ShoppingCart" + "?aaction=end";
 
             request.Add("amount", amount.ToString());
             request.Add("buyOrder", buyOrder.ToString());

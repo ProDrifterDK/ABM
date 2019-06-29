@@ -34,14 +34,16 @@
 			</div>
 		</div>
 	</nav>
-	<div id="mainAdmin" class="container body-content">
-		<ul class="sidenav center" id="main-menu">
-			<li><a href="@Url.Action("Index","HomeAdmin")">Administración</a></li>
-			<li><a href="@Url.Action("AdministradorProductos","HomeAdmin")">Gestor de productos</a></li>
-		</ul>
-		@RenderBody()
+	<div id="wrapper">
+		<div class="container body-content">
+			<ul class="sidenav center" id="main-menu">
+				<li><a href="@Url.Action("Index","HomeAdmin")">Administración</a></li>
+				<li><a href="@Url.Action("AdministradorProductos","HomeAdmin")">Gestor de productos</a></li>
+			</ul>
+			@RenderBody()
+		</div>
 	</div>
-    <script>
+	<script>
 		$(document).ready(function () {
 			$('.sidenav').sidenav();
 			$('.collapsible').collapsible();
@@ -51,8 +53,9 @@
 			$('.datepicker').datepicker();
 			$('.materialboxed').materialbox();
 
-            $('select').formSelect();		});
-    </script>
+			$('select').formSelect();
+		});
+	</script>
 </body>
 </html>
 

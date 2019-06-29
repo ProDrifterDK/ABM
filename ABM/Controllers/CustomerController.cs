@@ -13,5 +13,7 @@ namespace ABM.Controllers {
             return View(Carro);
         }
         public ActionResult Support() => this.View();
+		public ActionResult SuccessfulPayment() => this.View();
+		public ActionResult PaymentFailure() => this.View();
     }
 }

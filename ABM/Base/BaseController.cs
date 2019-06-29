@@ -56,6 +56,21 @@ namespace ABM.Base
             return lista;
         }
 
+        public JsonResult GetProdsCant()
+        {
+            try
+            {
+                var cantidad = Carro.NUB_CARRO_PRODUCTOS.ToList().Distinct().Count();
+
+                return Json( cantidad, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(0, JsonRequestBehavior.AllowGet);
+            }
+
+        }
+
         public JsonResult AgregarAlCarro(int proId, int cantidad)
         {
             try
