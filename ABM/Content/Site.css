@@ -1,15 +1,4 @@
-﻿html, body {
-	margin: 0;
-	padding: 0;
-	height: 100%;
-}
-
-
-footer {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-}
+﻿
 
 p {
 	text-justify: inter-word;
