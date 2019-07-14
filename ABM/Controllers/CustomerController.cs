@@ -32,5 +32,7 @@ namespace ABM.Controllers {
                 return JsonError("No se ha podido eliminar el producto, por favor contactar con un administrador.");
             }
         }
+		public ActionResult SuccessfulPayment() => this.View();
+		public ActionResult PaymentFailure() => this.View();
     }
 }

@@ -226,6 +226,8 @@
     <Content Include="Views\Pago\Index.cshtml" />
     <Content Include="Views\Customer\Support.cshtml" />
     <Content Include="Views\Shared\_LayoutSupport.cshtml" />
+    <Content Include="Views\Customer\SuccessfulPayment.cshtml" />
+    <Content Include="Views\Customer\PaymentFailure.cshtml" />
     <Content Include="Views\Cuenta\Login.cshtml" />
     <Content Include="Views\Cuenta\CrearCuenta.cshtml" />
   </ItemGroup>

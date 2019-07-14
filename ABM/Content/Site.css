@@ -1,7 +1,13 @@
-﻿body {
-	display: flex;
-	min-height: 100vh;
-	flex-direction: column;
+﻿
+
+p {
+	text-justify: inter-word;
+}
+
+
+.body-content {
+	padding-top: 56px;
+	padding-bottom: 300px;
 }
 
 .collapsible-body {
@@ -17,12 +23,36 @@
 	border-radius: 0px 10px;
 }
 
+.map-responsive {
+	overflow: hidden;
+	padding-bottom: 56.25%;
+	position: relative;
+	height: 0;
+}
+
+	.map-responsive iframe {
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: 100%;
+		position: absolute;
+	}
+
 .no-shadows {
 	box-shadow: none !important;
 }
 
+.producto:hover {
+	cursor: pointer;
+}
+
+
 .table-of-contents {
 	padding: 20px 20px 20px 20px;
+}
+
+.text-sombradito {
+	text-shadow: 2px 2px #000;
 }
 
 #caption-description-oldprice {
@@ -76,15 +106,6 @@
     background-size: 100%;
 }
 
-#main {
-	position: relative;
-	top:30px;
-}
-#mainAdmin {
-    position: relative;
-    top: 100px;
-}
-
 #main-nav {
 	position: fixed;
 	z-index: 100;
@@ -95,13 +116,6 @@
 	z-index: 100;
 }
 
-#main-navbar {
-    
-}
-
-#main-user-profile {
-	padding-top: 56px;
-}
 
 #nav-search {
 	position: fixed;
@@ -110,10 +124,30 @@
 	visibility: hidden;
 }
 
+#parent {
+	padding: 5% 0;
+}
+
+#child {
+	padding: 10% 0;
+}
+
 #showcase {
 	padding: 45px 0px 0px 0px;
 }
 
+
+#tabla-horarios {
+	padding-bottom: 30px;
+}
+
+#wrapper {
+	min-height: 100%;
+	position: relative;
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
 .text-sombradito{
     text-shadow:2px 2px #000;
 }

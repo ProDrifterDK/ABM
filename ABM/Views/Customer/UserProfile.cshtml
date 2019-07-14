@@ -2,72 +2,70 @@
 	ViewBag.Title = "Perfil de Usuario";
 	Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
 }
-<div id="main-user-profile">
-	<div class="row">
-		<div class="card col s12 m12 l3">
-			<div class="card-content">
-				<span class="card-title">Datos</span>
-				<p>Nombre: John Doe</p>
-				<p>Rut: 12345678-9</p>
-				<p>Teléfono: +56912345678</p>
-				<p>Correo: test@abmdistribuidora.cl</p>
-			</div>
-			<div class="card-action">
-				<a href="#">Editar datos</a>
-			</div>
+<div class="row">
+	<div class="card col s12 m12 l3">
+		<div class="card-content">
+			<span class="card-title">Datos</span>
+			<p>Nombre: John Doe</p>
+			<p>Rut: 12345678-9</p>
+			<p>Teléfono: +56912345678</p>
+			<p>Correo: test@abmdistribuidora.cl</p>
 		</div>
-		<div class="col s12 m12 l8 offset-l1">
-			<div class="card">
-				<div class="card-tabs">
-					<ul class="tabs tabs-fixed-width">
-						<li class="tab"><a class="active" href="#todos-los-productos">Todos los productos</a></li>
-						<li class="tab"><a href="#procesando">Procesando</a></li>
-						<li class="tab"><a href="#enviados">Enviados</a></li>
+		<div class="card-action">
+			<a href="#">Editar datos</a>
+		</div>
+	</div>
+	<div class="col s12 m12 l8 offset-l1">
+		<div class="card">
+			<div class="card-tabs">
+				<ul class="tabs tabs-fixed-width">
+					<li class="tab"><a class="active" href="#todos-los-productos">Todos los productos</a></li>
+					<li class="tab"><a href="#procesando">Procesando</a></li>
+					<li class="tab"><a href="#enviados">Enviados</a></li>
+				</ul>
+			</div>
+			<div class="card-content grey lighten-4">
+				<div id="todos-los-productos">
+					<ul class="collection">
+						@for (int i = 0; i < 6; i++) {
+							<li class="collection-item avatar">
+								<img src="~/Resources/Images/Examples/hammer.png" class="circle">
+								<span class="title">Ban Hammer</span>
+								<p>
+									Precio: $123.456 <br />
+									Estado: Enviado
+								</p>
+							</li>
+						}
 					</ul>
 				</div>
-				<div class="card-content grey lighten-4">
-					<div id="todos-los-productos">
-						<ul class="collection">
-							@for (int i = 0; i < 6; i++) {
-								<li class="collection-item avatar">
-									<img src="~/Resources/Images/Examples/hammer.png" class="circle">
-									<span class="title">Ban Hammer</span>
-									<p>
-										Precio: $123.456 <br />
-										Estado: Enviado
-									</p>
-								</li>
-							}
-						</ul>
-					</div>
-					<div id="procesando">
-						<ul class="collection">
-							@for (int i = 0; i < 4; i++) {
-								<li class="collection-item avatar">
-									<img src="~/Resources/Images/Examples/car.png" class="circle">
-									<span class="title">Auto</span>
-									<p>
-										Precio: $11.111 <br />
-										Estado: Procesando
-									</p>
-								</li>
-							}
-						</ul>
-					</div>
-					<div id="enviados">
-						<ul class="collection">
-							@for (int i = 0; i < 2; i++) {
-								<li class="collection-item avatar">
-									<img src="~/Resources/Images/Examples/nail.png" class="circle">
-									<span class="title">Nailed it</span>
-									<p>
-										Precio: $33.333 <br />
-										Estado: Enviado
-									</p>
-								</li>
-							}
-						</ul>
-					</div>
+				<div id="procesando">
+					<ul class="collection">
+						@for (int i = 0; i < 4; i++) {
+							<li class="collection-item avatar">
+								<img src="~/Resources/Images/Examples/car.png" class="circle">
+								<span class="title">Auto</span>
+								<p>
+									Precio: $11.111 <br />
+									Estado: Procesando
+								</p>
+							</li>
+						}
+					</ul>
+				</div>
+				<div id="enviados">
+					<ul class="collection">
+						@for (int i = 0; i < 2; i++) {
+							<li class="collection-item avatar">
+								<img src="~/Resources/Images/Examples/nail.png" class="circle">
+								<span class="title">Nailed it</span>
+								<p>
+									Precio: $33.333 <br />
+									Estado: Enviado
+								</p>
+							</li>
+						}
+					</ul>
 				</div>
 			</div>
 		</div>
