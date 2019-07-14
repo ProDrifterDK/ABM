@@ -13,5 +13,24 @@ namespace ABM.Controllers {
             return View(Carro);
         }
         public ActionResult Support() => this.View();
+
+        public JsonResult QuitarProductoDelCarro(int id)
+        {
+            try
+            {
+                var carprod = BddABM.NUB_CARRO_PRODUCTOS.FirstOrDefault(o => o.carpord_id == id);
+                BddABM.NUB_CARRO_PRODUCTOS.Remove(carprod);
+                BddABM.Entry(carprod).State = System.Data.Entity.EntityState.Deleted;
+
+                BddABM.SaveChanges();
+
+                return JsonExito();
+
+            }
+            catch (Exception ex)
+            {
+                return JsonError("No se ha podido eliminar el producto, por favor contactar con un administrador.");
+            }
+        }
     }
 }

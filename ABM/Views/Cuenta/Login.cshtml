@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Tilte = "Login";
+}
+
+<div class="row">
+    <div class="col s12 m4 offset-m4">
+        <div class="card">
+            <div class="card-content">
+                <form id="form" method="post">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="first_name" type="text" class="validate" name="rut">
+                            <label for="first_name">Rut</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input value="" id="disabled" type="password" class="validate" name="clave">
+                            <label for="disabled">Contraseña</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m6">
+                            <button class="btn btn-block" id="cancelar">Volver</button>
+                        </div>
+                        <div class="col s12 m6">
+                            <button class="btn btn-block" id="crear">Entrar <i class="material-icons right">send</i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-action">
+                <p>
+                    ¿No tienes cuenta? regístrate <a href="@Url.Action("CrearCuenta")">aquí</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#cancelar').click(function (e) {
+        e.preventDefault();
+        location.href = "@Url.Action("Sales","Home")";
+    });
+    $('#crear').click(function (e) {
+        e.preventDefault();
+        $('#form').submit();
+    });
+</script>

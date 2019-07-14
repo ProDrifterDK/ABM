@@ -70,7 +70,7 @@
                     <p>@(item.pro_monto * item.carpord_cantidad)</p>
                 </div>
                 <div class="col l2 center" id="Actions">
-                    <a class="btn tooltipped red" id="quitar" data-position="right" data-tooltip="Quitar"><i class="material-icons prefix">remove_circle_outline</i></a>
+                    <a class="btn tooltipped red quitar" id="@item.carpord_id" data-position="right" data-tooltip="Quitar"><i class="material-icons prefix">remove_circle_outline</i></a>
                 </div>
             </div>
         </div>
@@ -97,6 +97,22 @@
             $('#pagar').click(function () {
                 Pagar();
             });
+            $('.quitar').click(function (e) {
+                e.preventDefault();
+                var id = $(this).attr('id');
+
+                CrearAjax(
+                    function (data) {
+                        if (data.exito)
+                            location.reload;
+                        else {
+                            M.toast(data.mensaje);
+                        }
+                    },
+                    { id: id },
+                    "@Url.Action("QuitarProductoDelCarro")"
+                );
+            })
         });
 
         function Pagar() {

@@ -117,3 +117,8 @@
 .text-sombradito{
     text-shadow:2px 2px #000;
 }
+
+.btn-block{
+    display:block;
+    width:100%;
+}
