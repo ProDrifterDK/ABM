@@ -1,73 +1,97 @@
 ﻿@{
-	ViewBag.Title = "Perfil de Usuario";
-	Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+    ViewBag.Title = "Perfil de Usuario";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+    var usuario = (ABM.Datos.SQL.TBL_USUARIO)Session["Usuario"];
+
+
+    var carros = usuario.TBL_CARRO_COMPRA;
+
+    var listaProductos = carros.Select(o => o.NUB_CARRO_PRODUCTOS.ToList()).ToList();
+
+    List<ABM.Datos.SQL.NUB_CARRO_PRODUCTOS> productos = new List<ABM.Datos.SQL.NUB_CARRO_PRODUCTOS>();
+
+    foreach (var item in listaProductos)
+    {
+        productos.AddRange(item);
+    }
 }
-<div class="row">
-	<div class="card col s12 m12 l3">
-		<div class="card-content">
-			<span class="card-title">Datos</span>
-			<p>Nombre: John Doe</p>
-			<p>Rut: 12345678-9</p>
-			<p>Teléfono: +56912345678</p>
-			<p>Correo: test@abmdistribuidora.cl</p>
-		</div>
-		<div class="card-action">
-			<a href="#">Editar datos</a>
-		</div>
-	</div>
-	<div class="col s12 m12 l8 offset-l1">
-		<div class="card">
-			<div class="card-tabs">
-				<ul class="tabs tabs-fixed-width">
-					<li class="tab"><a class="active" href="#todos-los-productos">Todos los productos</a></li>
-					<li class="tab"><a href="#procesando">Procesando</a></li>
-					<li class="tab"><a href="#enviados">Enviados</a></li>
-				</ul>
-			</div>
-			<div class="card-content grey lighten-4">
-				<div id="todos-los-productos">
-					<ul class="collection">
-						@for (int i = 0; i < 6; i++) {
-							<li class="collection-item avatar">
-								<img src="~/Resources/Images/Examples/hammer.png" class="circle">
-								<span class="title">Ban Hammer</span>
-								<p>
-									Precio: $123.456 <br />
-									Estado: Enviado
-								</p>
-							</li>
-						}
-					</ul>
-				</div>
-				<div id="procesando">
-					<ul class="collection">
-						@for (int i = 0; i < 4; i++) {
-							<li class="collection-item avatar">
-								<img src="~/Resources/Images/Examples/car.png" class="circle">
-								<span class="title">Auto</span>
-								<p>
-									Precio: $11.111 <br />
-									Estado: Procesando
-								</p>
-							</li>
-						}
-					</ul>
-				</div>
-				<div id="enviados">
-					<ul class="collection">
-						@for (int i = 0; i < 2; i++) {
-							<li class="collection-item avatar">
-								<img src="~/Resources/Images/Examples/nail.png" class="circle">
-								<span class="title">Nailed it</span>
-								<p>
-									Precio: $33.333 <br />
-									Estado: Enviado
-								</p>
-							</li>
-						}
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+
+@if (usuario == null)
+{
+
+}
+else
+{
+    <div class="row">
+        <div class="card col s12 m12 l3">
+            <div class="card-content">
+                <span class="card-title">Datos</span>
+                <p>Nombre: @usuario.usu_nombre</p>
+                <p>Rut: @usuario.usu_rut</p>
+                <p>Teléfono: @usuario.usu_telefono</p>
+                <p>Correo: @usuario.usu_correo</p>
+            </div>
+            <div class="card-action">
+                <a href="#">Editar datos</a>
+            </div>
+        </div>
+        <div class="col s12 m12 l8 offset-l1">
+            <div class="card">
+                <div class="card-tabs">
+                    <ul class="tabs tabs-fixed-width">
+                        <li class="tab"><a class="active" href="#todos-los-productos">Todos los productos</a></li>
+                        <li class="tab"><a href="#procesando">Procesando</a></li>
+                        <li class="tab"><a href="#enviados">Enviados</a></li>
+                    </ul>
+                </div>
+                <div class="card-content grey lighten-4">
+                    <div id="todos-los-productos">
+                        <ul class="collection">
+                            @foreach (var item in productos)
+                            {
+                                <li class="collection-item avatar">
+                                    <img src="@item.TBL_PRODUCTO.pro_imagen" class="circle">
+                                    <span class="title">@item.TBL_PRODUCTO.pro_nombre</span>
+                                    <p>
+                                        Precio: @(item.pro_monto.ToString("C0")) <br />
+                                        Estado: @(item.TBL_CARRO_COMPRA.TBL_ESTADO_CARRO.CEST_NOMBRE)
+                                    </p>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    <div id="procesando">
+                        <ul class="collection">
+                            @foreach (var item in productos.Where(o=>o.TBL_CARRO_COMPRA.CEST_ESTADO == 3    ))
+                            {
+                                <li class="collection-item avatar">
+                                    <img src="@item.TBL_PRODUCTO.pro_imagen" class="circle">
+                                    <span class="title">@item.TBL_PRODUCTO.pro_nombre</span>
+                                    <p>
+                                        Precio: @(item.pro_monto.ToString("C0")) <br />
+                                        Estado: @(item.TBL_CARRO_COMPRA.TBL_ESTADO_CARRO.CEST_NOMBRE)
+                                    </p>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    <div id="enviados">
+                        <ul class="collection">
+                            @for (int i = 0; i < 2; i++)
+                            {
+                                <li class="collection-item avatar">
+                                    <img src="~/Resources/Images/Examples/nail.png" class="circle">
+                                    <span class="title">Nailed it</span>
+                                    <p>
+                                        Precio: $33.333 <br />
+                                        Estado: Enviado
+                                    </p>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
