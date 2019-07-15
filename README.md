@@ -6,6 +6,4 @@ Developers:
  - Alan Gárate
  - Daniel Barría
  - Samuel Cortés
- - Vicente Calderón
-
 **[Trello Board](https://trello.com/b/J0j27N8D/project-abm)**
